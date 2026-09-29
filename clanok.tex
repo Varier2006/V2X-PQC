@@ -9,7 +9,8 @@
 \usepackage{graphicx}
 \usepackage{url} % príkaz \url na formátovanie URL
 \usepackage{hyperref} % odkazy v texte budú aktívne (pri niektorých triedach dokumentov spôsobuje posun textu)
-
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta}
 \usepackage{cite}
 %\usepackage{times}
 
@@ -64,6 +65,46 @@ Aj text môže byť prezentovaný ako obrázok. Stane sa z neho označný pláva
 
 \section{Iná časť} \label{ina}
 
+\begin{figure}[h]
+    \centering
+
+    \resizebox{0.8\textwidth}{!}{
+        \begin{tikzpicture}[
+            node distance=1.8cm and 2.4cm,
+            box/.style={
+                draw,
+                rectangle,
+                rounded corners,
+                minimum width=3.2cm,
+                minimum height=1cm,
+                align=center
+            },
+            arrow/.style={
+                -{Stealth},
+                thick
+            }
+        ]
+
+        \node[box] (vehicle) {Intelligent Connected\\Vehicle};
+
+        \node[box, above=of vehicle] (cloud) {Cloud Platform};
+        \node[box, left=of vehicle] (mobile) {Mobile Application};
+        \node[box, right=of vehicle] (network) {External Network};
+        \node[box, below left=of vehicle] (ivi) {IVI\\Infotainment System};
+        \node[box, below right=of vehicle] (adas) {ADAS\\System};
+
+        \draw[arrow] (cloud) -- (vehicle);
+        \draw[arrow] (mobile) -- (vehicle);
+        \draw[arrow] (network) -- (vehicle);
+        \draw[arrow] (vehicle) -- (ivi);
+        \draw[arrow] (vehicle) -- (adas);
+
+        \end{tikzpicture}
+    }
+
+    \caption{Simplified attack surface of an Intelligent Connected Vehicle}
+    \label{fig:icv_attack_surface}
+\end{figure}
 Základným problémom je teda\ldots{} Najprv sa pozrieme na nejaké vysvetlenie (časť~\ref{ina:nejake}), a potom na ešte nejaké (časť~\ref{ina:nejake}).\footnote{Niekedy môžete potrebovať aj poznámku pod čiarou.}
 
 Môže sa zdať, že problém vlastne nejestvuje\cite{Coplien:MPD}, ale bolo dokázané, že to tak nie je~\cite{Czarnecki:Staged, Czarnecki:Progress}. Napriek tomu, aj dnes na webe narazíme na všelijaké pochybné názory\cite{PLP-Framework}. Dôležité veci možno \emph{zdôrazniť kurzívou}.
