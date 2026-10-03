@@ -1,0 +1,185 @@
+% Metódy Inžinierskej Práce (MIP)
+
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, margin=2.5cm]{geometry}
+%\usepackage{fontspec}
+\usepackage[slovak]{babel}
+\babelprovide[import, onchar=ids fonts]{slovak}
+%\babelfont{rm}{Noto Sans}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\definecolor{primary}{RGB}{30, 58, 138}
+\definecolor{secondary}{RGB}{71, 85, 105}
+\definecolor{lightgray}{RGB}{248, 250, 252}
+\definecolor{bordergray}{RGB}{226, 232, 240}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primary,
+    urlcolor=primary,
+    pdfauthor={[Meno Študenta]},
+    pdftitle={Zameranie projektu - Metódy inžinierskej práce}
+}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\begin{center}
+    {\Large \textbf{Slovenská technická univerzita v Bratislave}}\\[2pt]
+    {\large Fakulta informatiky a informačných technológií}\\[15pt]
+    {\LARGE \textbf{\color{primary} Metódy inžinierskej práce}}\\[4pt]
+    {\large Ak. rok 2025/2026}
+\end{center}
+
+\vspace{10pt}
+
+\begin{center}
+    \colorbox{lightgray}{
+        \parbox{0.95\textwidth}{
+            \vspace{4pt}
+            \textbf{Tím:} Matúš Čapo, Oleksii Demydchenko, Jakub Dufek, Danylo Dusheiko \hfill \\[2pt]
+            \vspace{4pt}
+        }
+    }
+\end{center}
+
+\vspace{15pt}
+
+\section*{Žiadosť pre aplikovaný výskum (Výzva VV-2024)}
+
+\vspace{10pt}
+
+\subsection*{Položka VV-A1-03: Názov projektu}
+\textbf{\large Implementácia post-kvantovej kryptografie do systémov V2X}
+
+\vspace{15pt}
+
+\subsection*{Položka VV-A1-04: Akronym projektu}
+\textbf{\large V2X-PQC}
+
+\vspace{15pt}
+
+\subsection*{Položka VV-A1-09: Anotácia projektu}
+
+Príchod kvantových počítačov si vyžaduje prechod na post-kvantové štandardy (PQC). Štandard ML-DSA (Dilithium) je najrozšírenejší v iných oblastiach ale pre oblasť V2X je jeho podpis veľkosti 2420 bajtov príliš mohutný čo pri vysokej hustote dopravy spôsobuje preťaženie komunikačných kanálov. Existujú alternatívy ako algoritmus menom Falcon, jeho podpis môže byť omnoho menší, až 666 bajtov. Ale nastáva iný problém, overovanie podpisu algoritmu Falcon je výpočtovo náročné a pri podmiekách rušných križovatiek, alebo dopravnej špičky tvorí nadmernú výpočtovú záťaž pre cestné jednotky RSU. Výpočtová záťaž môže mať za následok prekročenie striktného štandardu latencie vo výške 10ms. Hlavným cieľom projektu \textbf{V2X-PQC} je výskum % /porovnanie/ potencialne aj vývoj ale to sa este dohodneme
+PQC algoritmov s cieľom nájsť  % alebo vyvynut
+ideálny pre využitie pre systémy komunikácie V2X a vyvynúť softvér pre využitie v cestných jednotkách (RSU) a palubných počítačov (OBU) pre efektívne overovanie kryptografických podpisov správ zdieľaných účastníkmi V2X systémov spôsobom kompresie PQC hlavičiek a dávkovej verifikácie. Kľúčovým prínosom projektu bude softvérový modul integrovaný do protokolu IEEE 1609.2, ktorý zníži objem prenášaných kryptografických dát o viac ako 40\% a zabezpečí latenciu verifikácie pod 10 ms aj pri záťaži 1 000 správ za sekundu. % arbitrárne ale myslím že dosiahnuteľné hodnoty (hovorím o 40% a 1000 správ/s. 10ms je požiadavka štandardu takže tvorí pevný limit latencie.)
+Projekt sa taktiež zamerá návrhom a implementáciou hardvérovo akcelerovanej architektúry verifikácie PQC podpisov pre RSU a OBU systémy. Architektúra bude spájať optimalizáciu algoritmov PQC na úrovni inštrukcií (SIMD/FPGA/GPU akcelerácia) s paralelnou verifikáciou BSM správ. Výsledkom bude akceleračný softvérovo-hardvérový modul schopný spracovať viac ako 1 200 PQC podpisov za sekundu pri latencii pod 5 ms. % treba upravit nech prechod medzi touto a predoslou castou je plynulejsi
+%1689ch je sucasny rozsah
+
+
+\vspace{15pt}
+
+% dole je sablona pre formatovanie co by sme mohli vyuzit kedze mame viac vystupov pre projekt
+Kľúčovým prínosom projektu je integrácia \textit{federatívneho učenia} (Federated Learning) s ľahkými modelmi strojového učenia, čo umožní trénovať detekčné modely priamo na lokalizovaných uzloch bez potreby odosielania citlivých prevádzkových dát do centrálneho cloudu. Výskumný zámer zahŕňa troch hlavné stĺpy: 
+\begin{itemize}[leftmargin=20pt, topsep=4pt, itemsep=2pt]
+    \item Návrh adaptívnych modelov strojového učenia schopných bežať na obmedzených hardvérových zdrojoch (s nízkou výpočtovou kapacitou a pamäťou).
+    \item Optimalizáciu komunikačného protokolu pre distribuovanú agregáciu modelových parametrov s dôrazom na odolnosť voči výpadkom siete a zámerným útokom typu poisoning.
+    \item Implementáciu prototipu v prostredí simulovanej smart-grid infraštruktúry a validáciu detekčnej presnosti voči neznámym zero-day útokom.
+\end{itemize}
+
+Výsledkom projektu bude aplikovateľná softvérová knižnica a metodika nasadenia pre priemyselné IoT systémy. Projekt priamo odpovedá na potrebu zvýšenia kybernetickej bezpečnosti kritickej infraštruktúry v SR s vysokým potenciálom prenosu poznatkov do praxe.
+
+\end{document}
+
+
+
+
+
+
+
+
+%vsetko dole je odkomentovane a ignorovane kompilatorom, aspon myslim
+\begin{comment}
+
+
+\documentclass[11pt,oneside,slovak,a4paper]{article}
+
+\usepackage[a4paper, margin=2.5cm]{geometry}
+\usepackage[slovak]{babel}
+%\usepackage[T1]{fontenc}
+\usepackage[IL2]{fontenc} % lepšia sadzba písmena Ľ než v T1
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{url} % príkaz \url na formátovanie URL
+\usepackage{hyperref} % odkazy v texte budú aktívne (pri niektorých triedach dokumentov spôsobuje posun textu)
+
+\usepackage{cite}
+%\usepackage{times}
+
+\usepackage{comment}
+
+\pagestyle{headings}
+
+\title{Žiadosť o aplikovaný výskum}
+
+\author{Matúš Čapo, Oleksii Demydchenko, Jakub Dufek, Danylo Dusheiko\\[2pt]
+	{\small Slovenská technická univerzita v Bratislave}\\
+	{\small Fakulta informatiky a informačných technológií}\\
+	{\small \texttt{xcapo@stuba.sk xdemydchenko@stuba.sk xdufekj@stuba.sk xdusheiko@stuba.sk}}
+	}
+
+\date{\small 30. september 2026} % upravte
+
+
+
+\begin{document}
+
+
+
+\section{Položka VV-A1-03: Názov projektu}
+
+\begin{abstract}
+
+Projekt V2X-PQC navrhuje softvérové aj hardvérové riešenie pre implementáciu bezpečnostného štandardu protokolu IEEE 1609.2
+
+\end{abstract}
+
+
+
+\section{Úvod}
+
+Motivujte čitateľa a vysvetlite, o čom píšete. Úvod sa väčšinou nedelí na časti.
+
+Uveďte explicitne štruktúru článku. Tu je nejaký príklad.
+Základný problém, ktorý bol naznačený v úvode, je podrobnejšie vysvetlený v časti~\ref{nejaka}.
+Dôležité súvislosti sú uvedené v častiach~\ref{dolezita} a~\ref{dolezitejsia}.
+Záverečné poznámky prináša časť~\ref{zaver}.
+
+
+
+\begin{figure*}[tbh]
+\centering
+%\includegraphics[scale=1.0]{diagram.pdf}
+Aj text môže byť prezentovaný ako obrázok. Stane sa z neho označný plávajúci objekt. Po vytvorení diagramu zrušte znak \texttt{\%} pred príkazom \verb|\includegraphics| označte tento riadok ako komentár (tiež pomocou znaku \texttt{\%}).
+\caption{Rozhodujúci argument.}
+\label{f:rozhod}
+\end{figure*}
+
+
+
+\section{Iná časť} \label{ina}
+%text z ktoreho som sa inspiroval
+%Príchod kvantových počítačov predstavuje hrozbu pre V2X komunikáciu, ktorá sa spolieha na kryptografiu eliptických kriviek (ECDSA). Prechod na post-kvantové štandardy (PQC), ako je ML-DSA (Dilithium), naráža na "krízu veľkosti dáta" – podpis Dilithium2 je 40-krát väčší ako ECDSA, čo pri vysokej hustote dopravy spôsobuje preťaženie kanálov 5G NR-V2X Sidelink a IEEE 802.11bd. Hlavným cieľom projektu je výskum a vývoj hybridného algoritmu pre agregáciu podpisov a kompresiu PQC hlavičiek v reálnom čase. Návrh kombinuje štrukturálne kompresné metódy s dávkovou verifikáciou (batch verification) na úrovni cestných jednotiek (RSU) a palubných počítačov (OBU). Výstupom projektu bude softvérový modul integrovaný do protokolu IEEE 1609.2, ktorý zníži objem prenášaných kryptografických dát o viac ako 60\% a zabezpečí latenciu verifikácie pod 10 ms aj pri záťaži 1 000 správ za sekundu.
+%Na rušných mestských križovatkách musia cestné jednotky (RSU) overiť až 1 000 bezpečnostných správ za sekundu. Prechod z klasickej kryptografie na post-kvantové algoritmy (ML-DSA/Dilithium) spôsobuje obrovskú výpočtovú záťaž, ktorú bežné palubné a cestné procesory zvládajú len za cenu prekročenia striktného 10 ms limitu latencie. Projekt sa zamera na návrh a implementáciu hardvérovo akcelerovanej architektúry verifikácie PQC podpisov pre RSU a OBU systémy. Výskum spája optimalizáciu algoritmov mriežkovej kryptografie (Lattice-based cryptography) na úrovni instrukcií (SIMD/FPGA/GPU akcelerácia) s paralelnou verifikáciou BSM správ. Výsledkom bude akceleračný softvérovo-hardvérový modul capable spracovať viac ako 1 200 PQC podpisov za sekundu pri latencii pod 5 ms.
+
+Príchod kvantových počítačov si vyžaduje prechod na post-kvantové štandardy (PQC). Štandard ML-DSA (Dilithium) je najrozšírenejší v iných oblastiach ale pre oblasť V2X je jeho podpis veľkosti 2420 bajtov príliš mohutný čo pri vysokej hustote dopravy spôsobuje preťaženie komunikačných kanálov. Existujú alternatívy ako algoritmus menom Falcon, jeho podpis môže byť omnoho menší, až 666 bajtov. Ale nastáva iný problém, overovanie podpisu algoritmu Falcon je výpočtovo náročné a pri podmiekách rušných križovatiek, alebo dopravnej špičky tvorí nadmernú výpočtovú záťaž pre cestné jednotky RSU. Výpočtová záťaž môže mať za následok prekročenie striktného štandardu latencie vo výške 10ms. Hlavným cieľom projektu je výskum % potencialne aj vývoj ale to sa este dohodneme
+PQC algoritmov s cieľom nájsť  % alebo vyvynut
+ideálny pre využitie pre systémy komunikácie V2X a vyvynúť softvér pre využitie v cestných jednotkách (RSU) a palubných počítačov (OBU) pre efektívne overovanie kryptografických podpisov správ zdieľaných účastníkmi V2X systémov spôsobom kompresie PQC hlavičiek a dávkovej verifikácie. Výstupom projektu bude softvérový modul integrovaný do protokolu IEEE 1609.2, ktorý zníži objem prenášaných kryptografických dát o viac ako 40\% a zabezpečí latenciu verifikácie pod 10 ms aj pri záťaži 1 000 správ za sekundu. % arbitrárne ale myslím že dosiahnuteľné hodnoty (hovorím o 40% a 1000 správ/s. 10ms je požiadavka štandardu takže tvorí pevný limit latencie.)
+Projekt sa taktiež zamerá návrhom a implementáciou hardvérovo akcelerovanej architektúry verifikácie PQC podpisov pre RSU a OBU systémy. Architektúra bude spájať optimalizáciu algoritmov PQC na úrovni inštrukcií (SIMD/FPGA/GPU akcelerácia) s paralelnou verifikáciou BSM správ. Výsledkom bude akceleračný softvérovo-hardvérový modul schopný spracovať viac ako 1 200 PQC podpisov za sekundu pri latencii pod 5 ms. % treba upravit nech prechod medzi touto a predoslou castou je plynulejsi
+
+
+Základným problémom je teda\ldots{} Najprv sa pozrieme na nejaké vysvetlenie (časť~\ref{ina:nejake}), a potom na ešte nejaké (časť~\ref{ina:nejake}).\footnote{Niekedy môžete potrebovať aj poznámku pod čiarou.}
+
+Môže sa zdať, že problém vlastne nejestvuje\cite{Coplien:MPD}, ale bolo dokázané, že to tak nie je~\cite{Czarnecki:Staged, Czarnecki:Progress}. Napriek tomu, aj dnes na webe narazíme na všelijaké pochybné názory\cite{PLP-Framework}. Dôležité veci možno \emph{zdôrazniť kurzívou}.
+
+
+
+
+\bibliography{literatura}
+\bibliographystyle{plain} % prípadne alpha, abbrv alebo hociktorý iný
+\end{document}
+\end{comment}
