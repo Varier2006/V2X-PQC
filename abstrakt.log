@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.9.22)  3 OCT 2026 23:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.9.22)  4 OCT 2026 12:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -358,63 +358,60 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 46.
 
-Overfull \hbox (30.1092pt too wide) in paragraph at lines 67--72
-\OT1/cmr/m/n/10.95 vel[]kosti 2420 bajtov pr^^S^^Pli^^Ts mohutn^^Sy ^^Tco pri v
-ysokej hustote dopravy sp^osobuje pret[]a^^Tzenie komunika^^Tcn^^Sych
+Overfull \hbox (4.38162pt too wide) in paragraph at lines 67--69
+\OT1/cmr/m/n/10.95 kryptografick^^Se ^^Tstandardy (PQC). []Standardizovan^^Sy a
+lgoritmus ML-DSA (Dilithium) s^^S^^Pce nach^^Sadza
  []
 
 
-Overfull \hbox (14.80069pt too wide) in paragraph at lines 67--72
-\OT1/cmr/m/n/10.95 ^^Tstandardu latencie vo v^^Sy^^Tske 10ms. Hlavn^^Sym ciel[]
-om projektu \OT1/cmr/bx/n/10.95 V2X-PQC \OT1/cmr/m/n/10.95 je v^^Syskum PQC alg
-oritmov
+Overfull \hbox (15.18686pt too wide) in paragraph at lines 67--69
+\OT1/cmr/m/n/10.95 ru^^Tsn^^Sych kri^^Tzovatk^^Sach ne^^Sumerne zat[]a^^Tzuje c
+estn^^Se jednotky (RSU), ^^Tco sp^osobuje prekro^^Tcenie kritick^^Seho
  []
 
 
-Overfull \hbox (13.35333pt too wide) in paragraph at lines 67--72
-\OT1/cmr/m/n/10.95 cestn^^Sych jednotk^^Sach (RSU) a palubn^^Sych po^^Tc^^S^^Pt
-a^^Tcov (OBU) pre efekt^^S^^Pvne overovanie kryptografick^^Sych
+Underfull \hbox (badness 10000) in paragraph at lines 67--69
+
  []
 
 
-Overfull \hbox (9.93687pt too wide) in paragraph at lines 67--72
-\OT1/cmr/m/n/10.95 d^^Savkovej verifik^^Sacie. Kl[]^^Su^^Tcov^^Sym pr^^S^^Pnoso
-m projektu bude softv^^Serov^^Sy modul integrovan^^Sy do protokolu
+Overfull \hbox (17.04901pt too wide) in paragraph at lines 70--72
+[]\OT1/cmr/m/n/10.95 Hlavn^^Sym ciel[]om projektu V2X-PQC je v^^Syskum a optima
+liz^^Sacia PQC algoritmov pre komunik^^Saciu
  []
 
 
-Overfull \hbox (9.39548pt too wide) in paragraph at lines 77--78
-\OT1/cmr/m/n/10.95 l[]ahk^^Symi modelmi strojov^^Seho u^^Tcenia, ^^Tco umo^^Tzn
-^^S^^P tr^^Senovat[] detek^^Tcn^^Se modely priamo na lokalizovan^^Sych
+Overfull \hbox (1.1866pt too wide) in paragraph at lines 70--72
+\OT1/cmr/m/n/10.95 V2X a v^^Syvoj ^^Tspecializovan^^Seho softv^^Serov^^Seho rie
+^^Tsenia pre cestn^^Se jednotky (RSU) a palubn^^Se po^^Tc^^S^^Pta^^Tce
  []
 
 
-Overfull \hbox (9.9105pt too wide) in paragraph at lines 79--80
-[]\OT1/cmr/m/n/10.95 N^^Savrh adapt^^S^^Pvnych modelov strojov^^Seho u^^Tcenia 
-schopn^^Sych be^^Tzat[] na obmedzen^^Sych hardv^^Serov^^Sych
+Overfull \hbox (8.21536pt too wide) in paragraph at lines 70--72
+\OT1/cmr/m/n/10.95 vozidiel (OBU). Navrhovan^^Sy syst^^Sem umo^^Tzn^^S^^P vysok
+oefekt^^S^^Pvne overovanie kryptografick^^Sych podpisov
+ []
+
+
+Overfull \hbox (11.3957pt too wide) in paragraph at lines 70--72
+\OT1/cmr/m/n/10.95 spr^^Sav zdiel[]an^^Sych ^^Su^^Tcastn^^S^^Pkmi prem^^Savky p
+rostredn^^S^^Pctvom kompresie PQC hlavi^^Tciek a viacvl^^Saknov^^Seho
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--72
+
+ []
+
+
+Overfull \hbox (19.47562pt too wide) in paragraph at lines 73--75
+\OT1/cmr/m/n/10.95 verifik^^Sacie pod 10 ms aj pri z^^Sat[]a^^Tzi 1 000 spr^^Sa
+v za sekundu. V^^Sysledn^^Sy softv^^Ser dosiahne prostredn^^S^^Pctvom
  []
 
 [1
 
-{/home/varier/.miktex/texmfs/data/fonts/map/pdftex/pdftex.map}]
-Overfull \hbox (3.91232pt too wide) in paragraph at lines 80--81
-[]\OT1/cmr/m/n/10.95 Optimaliz^^Saciu komunika^^Tcn^^Seho protokolu pre distrib
-uovan^^Su agreg^^Saciu modelov^^Sych parametrov
- []
-
-
-Overfull \hbox (16.32239pt too wide) in paragraph at lines 81--82
-[]\OT1/cmr/m/n/10.95 Implement^^Saciu prototipu v prostred^^S^^P simulovanej sm
-art-grid infra^^Tstrukt^^Sury a valid^^Saciu detek^^Tcnej
- []
-
-
-Overfull \hbox (20.91432pt too wide) in paragraph at lines 84--85
-[]\OT1/cmr/m/n/10.95 V^^Sysledkom projektu bude aplikovatel[]n^^Sa softv^^Serov
-^^Sa kni^^Tznica a metodika nasadenia pre priemyseln^^Se
- []
-
-[2] (abstrakt.aux)
+{/home/varier/.miktex/texmfs/data/fonts/map/pdftex/pdftex.map}] (abstrakt.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-08-10>
@@ -423,24 +420,22 @@ Package rerunfilecheck Info: File `abstrakt.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 10931 strings out of 469378
- 177146 string characters out of 5459544
- 633906 words of memory out of 5000000
- 39902 multiletter control sequences out of 15000+600000
- 633271 words of font info for 58 fonts, out of 8000000 for 9000
+ 10916 strings out of 469378
+ 176876 string characters out of 5459544
+ 631906 words of memory out of 5000000
+ 39890 multiletter control sequences out of 15000+600000
+ 632584 words of font info for 56 fonts, out of 8000000 for 9000
  0 hyphenation exceptions out of 8191
- 74i,5n,79p,919b,585s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </home/varier/.miktex/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm109
-5.pk> </home/varier/.miktex/texmfs/data/fonts/pk/ljfour/public/cm/dpi657/cmti10
-.pk> </home/varier/.miktex/texmfs/data/fonts/pk/ljfour/public/cm/dpi600/cmbx12.
-pk> </home/varier/.miktex/texmfs/data/fonts/pk/ljfour/public/cm/dpi657/cmr10.pk
-> </home/varier/.miktex/texmfs/data/fonts/pk/ljfour/public/cm/dpi657/cmbx10.pk>
- </home/varier/.miktex/texmfs/data/fonts/pk/ljfour/public/cm/dpi864/cmbx12.pk> 
-</home/varier/.miktex/texmfs/data/fonts/pk/ljfour/public/cm/dpi600/cmr12.pk> </
-home/varier/.miktex/texmfs/data/fonts/pk/ljfour/public/cm/dpi720/cmbx12.pk>
-Output written on abstrakt.pdf (2 pages, 83787 bytes).
+ 74i,5n,79p,871b,463s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/varier/.miktex/texmfs/data/fonts/pk/ljfour/public/cm/dpi600/cmbx12.pk
+> </home/varier/.miktex/texmfs/data/fonts/pk/ljfour/public/cm/dpi657/cmr10.pk> 
+</home/varier/.miktex/texmfs/data/fonts/pk/ljfour/public/cm/dpi657/cmbx10.pk> <
+/home/varier/.miktex/texmfs/data/fonts/pk/ljfour/public/cm/dpi864/cmbx12.pk> </
+home/varier/.miktex/texmfs/data/fonts/pk/ljfour/public/cm/dpi600/cmr12.pk> </ho
+me/varier/.miktex/texmfs/data/fonts/pk/ljfour/public/cm/dpi720/cmbx12.pk>
+Output written on abstrakt.pdf (1 page, 71164 bytes).
 PDF statistics:
- 267 PDF objects out of 1000 (max. 8388607)
- 7 named destinations out of 1000 (max. 500000)
+ 225 PDF objects out of 1000 (max. 8388607)
+ 6 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
