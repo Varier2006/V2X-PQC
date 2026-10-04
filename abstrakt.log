@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.9.22)  4 OCT 2026 12:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.9.22)  4 OCT 2026 12:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -358,53 +358,53 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 46.
 
-Overfull \hbox (4.38162pt too wide) in paragraph at lines 67--69
+Overfull \hbox (4.38162pt too wide) in paragraph at lines 66--68
 \OT1/cmr/m/n/10.95 kryptografick^^Se ^^Tstandardy (PQC). []Standardizovan^^Sy a
 lgoritmus ML-DSA (Dilithium) s^^S^^Pce nach^^Sadza
  []
 
 
-Overfull \hbox (15.18686pt too wide) in paragraph at lines 67--69
+Overfull \hbox (15.18686pt too wide) in paragraph at lines 66--68
 \OT1/cmr/m/n/10.95 ru^^Tsn^^Sych kri^^Tzovatk^^Sach ne^^Sumerne zat[]a^^Tzuje c
 estn^^Se jednotky (RSU), ^^Tco sp^osobuje prekro^^Tcenie kritick^^Seho
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 67--69
+Underfull \hbox (badness 10000) in paragraph at lines 66--68
 
  []
 
 
-Overfull \hbox (17.04901pt too wide) in paragraph at lines 70--72
+Overfull \hbox (17.04901pt too wide) in paragraph at lines 69--71
 []\OT1/cmr/m/n/10.95 Hlavn^^Sym ciel[]om projektu V2X-PQC je v^^Syskum a optima
 liz^^Sacia PQC algoritmov pre komunik^^Saciu
  []
 
 
-Overfull \hbox (1.1866pt too wide) in paragraph at lines 70--72
+Overfull \hbox (1.1866pt too wide) in paragraph at lines 69--71
 \OT1/cmr/m/n/10.95 V2X a v^^Syvoj ^^Tspecializovan^^Seho softv^^Serov^^Seho rie
 ^^Tsenia pre cestn^^Se jednotky (RSU) a palubn^^Se po^^Tc^^S^^Pta^^Tce
  []
 
 
-Overfull \hbox (8.21536pt too wide) in paragraph at lines 70--72
+Overfull \hbox (8.21536pt too wide) in paragraph at lines 69--71
 \OT1/cmr/m/n/10.95 vozidiel (OBU). Navrhovan^^Sy syst^^Sem umo^^Tzn^^S^^P vysok
 oefekt^^S^^Pvne overovanie kryptografick^^Sych podpisov
  []
 
 
-Overfull \hbox (11.3957pt too wide) in paragraph at lines 70--72
+Overfull \hbox (11.3957pt too wide) in paragraph at lines 69--71
 \OT1/cmr/m/n/10.95 spr^^Sav zdiel[]an^^Sych ^^Su^^Tcastn^^S^^Pkmi prem^^Savky p
 rostredn^^S^^Pctvom kompresie PQC hlavi^^Tciek a viacvl^^Saknov^^Seho
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 70--72
+Underfull \hbox (badness 10000) in paragraph at lines 69--71
 
  []
 
 
-Overfull \hbox (19.47562pt too wide) in paragraph at lines 73--75
+Overfull \hbox (19.47562pt too wide) in paragraph at lines 72--74
 \OT1/cmr/m/n/10.95 verifik^^Sacie pod 10 ms aj pri z^^Sat[]a^^Tzi 1 000 spr^^Sa
 v za sekundu. V^^Sysledn^^Sy softv^^Ser dosiahne prostredn^^S^^Pctvom
  []
@@ -426,14 +426,14 @@ Here is how much of TeX's memory you used:
  39890 multiletter control sequences out of 15000+600000
  632584 words of font info for 56 fonts, out of 8000000 for 9000
  0 hyphenation exceptions out of 8191
- 74i,5n,79p,871b,463s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 74i,5n,79p,891b,463s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/varier/.miktex/texmfs/data/fonts/pk/ljfour/public/cm/dpi600/cmbx12.pk
 > </home/varier/.miktex/texmfs/data/fonts/pk/ljfour/public/cm/dpi657/cmr10.pk> 
 </home/varier/.miktex/texmfs/data/fonts/pk/ljfour/public/cm/dpi657/cmbx10.pk> <
 /home/varier/.miktex/texmfs/data/fonts/pk/ljfour/public/cm/dpi864/cmbx12.pk> </
 home/varier/.miktex/texmfs/data/fonts/pk/ljfour/public/cm/dpi600/cmr12.pk> </ho
 me/varier/.miktex/texmfs/data/fonts/pk/ljfour/public/cm/dpi720/cmbx12.pk>
-Output written on abstrakt.pdf (1 page, 71164 bytes).
+Output written on abstrakt.pdf (1 page, 71172 bytes).
 PDF statistics:
  225 PDF objects out of 1000 (max. 8388607)
  6 named destinations out of 1000 (max. 500000)
