@@ -1,0 +1,163 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[a4paper, margin=2.5cm]{geometry}
+%\usepackage{fontspec}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[slovak,english]{babel}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{booktabs,longtable,tabularx,array}
+\usepackage{lmodern}
+\definecolor{primary}{RGB}{26, 58, 138}
+\definecolor{secondary}{RGB}{91, 85, 105}
+\definecolor{lightgray}{RGB}{248, 250, 252}
+\definecolor{bordergray}{RGB}{226, 232, 240}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primary,
+    urlcolor=primary,
+    pdfauthor={Matus Capo, Oleksii Demydchenko, Jakub Dufek, Danylo Dusheiko},
+    pdftitle={Project Proposal - Methods of Engineering Work}
+}
+\pagestyle{plain}
+\renewcommand{\arraystretch}{1.15}
+\setlist[itemize]{leftmargin=*,nosep,topsep=2pt}
+\newcommand{\eur}[1]{\mbox{#1 EUR}}
+\newcommand{\smallnote}[1]{{\small\color{secondary}#1}}
+
+\newcommand{\budgettable}{%
+\small
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}Xrrr@{}}
+\toprule
+\textbf{Budget category} & \textbf{2027 (EUR)} & \textbf{2028 (EUR)} & \textbf{Total (EUR)}\\
+\midrule
+01. Direct running costs & 32,619.20 & 33,019.20 & 65,638.40\\
+\quad 02. Wage and other personal costs & 21,600.00 & 21,600.00 & 43,200.00\\
+\quad 03. Social and health insurance & 7,819.20 & 7,819.20 & 15,638.40\\
+\quad 04. Travel costs & 500.00 & 1,500.00 & 2,000.00\\
+\quad 05. Material & 1,500.00 & 900.00 & 2,400.00\\
+\quad 06. Services & 900.00 & 900.00 & 1,800.00\\
+\quad 07. Energy, water, communications & 300.00 & 300.00 & 600.00\\
+\quad 08. Popularization costs & 0.00 & 0.00 & 0.00\\
+09. Indirect costs & 1,500.00 & 1,500.00 & 3,000.00\\
+\midrule
+\textbf{10. Total running costs} & \textbf{34,119.20} & \textbf{34,519.20} & \textbf{68,638.40}\\
+\textbf{Total costs from APVV} & \textbf{34,119.20} & \textbf{34,519.20} & \textbf{68,638.40}\\
+Financing from other sources & 0.00 & 0.00 & 0.00\\
+\quad State (outside APVV) & 0.00 & 0.00 & 0.00\\
+\quad Foreign & 0.00 & 0.00 & 0.00\\
+\quad Private & 0.00 & 0.00 & 0.00\\
+\textbf{Total costs} & \textbf{34,119.20} & \textbf{34,519.20} & \textbf{68,638.40}\\
+\bottomrule
+\end{tabularx}
+\normalsize}
+
+\begin{document}
+\selectlanguage{english}
+\begin{center}
+    {\Large \textbf{Slovak University of Technology in Bratislava}}\\[2pt]
+    {\large Faculty of Informatics and Information Technologies}\\[15pt]
+    {\LARGE \textbf{\color{primary} Methods of Engineering Work}}\\[4pt]
+    {\large Academic Year 2026/2027}
+\end{center}
+\vspace{10pt}
+\begin{center}
+    \colorbox{lightgray}{%
+        \parbox{0.95\textwidth}{%
+            \vspace{4pt}
+            \textbf{Team:} Matúš Čapo, Oleksii Demydchenko, Jakub Dufek, Danylo Dusheiko \hfill \\[2pt]
+            \vspace{4pt}
+        }
+    }
+\end{center}
+\vspace{15pt}
+\section*{Application for Applied Research (Call VV-2024)}
+\vspace{10pt}
+\subsection*{Item VV-A1-03: Project Title}
+\textbf{\large Implementation of Post-Quantum Cryptography in V2X Systems}
+\vspace{15pt}
+\subsection*{Item VV-A1-04: Project Acronym}
+\textbf{\large V2X-PQC}
+\vspace{15pt}
+\subsection*{Item VV-A1-09: Project Annotation}
+
+The advent of quantum computers poses an imminent security threat to modern cooperative intelligent transportation systems, making the transition to post-quantum cryptographic (PQC) standards necessary. Although the standardized ML-DSA (Dilithium) algorithm is widely applicable in the IT sector, it faces significant limitations in vehicle-to-everything (V2X) communication. Its 2,420-byte digital signature can overload communication channels under high traffic density. The alternative Falcon algorithm, with a 666-byte signature, reduces bandwidth consumption but entails substantial computational costs for verification. At busy intersections, this places an excessive burden on roadside units (RSUs), causing the critical latency threshold of 10 ms to be exceeded.
+
+\par
+The main objective of the V2X-PQC project is to investigate and optimize PQC algorithms for V2X communication and develop a specialized software solution for roadside units (RSUs) and vehicle on-board units (OBUs). The proposed system will enable highly efficient verification of cryptographic signatures on messages shared among road users through PQC header compression and multithreaded processing of standardized Basic Safety Messages (BSMs).
+
+\par
+The key project outcome will be an IEEE 1609.2-compatible software solution that reduces the volume of transmitted cryptographic data by more than 40\% and guarantees verification latency below 10 ms even at a load of 1,000 messages per second. Through hardware-specific code optimization, the resulting software will achieve a throughput of over 1,200 PQC signatures per second and reduce latency to below 5 ms. The project will optimize existing security standards for connected vehicles and adapt them to current technical requirements in the automotive industry.
+
+\clearpage
+\section*{VV-C -- Budget of the Project in EUR}
+\subsection*{Applicant}
+\budgettable
+
+\subsection*{List of Expected Costs Covered by APVV}
+\small
+\begin{longtable}{@{}p{0.08\linewidth}p{0.86\linewidth}@{}}
+\toprule
+\textbf{No.} & \textbf{Expected costs}\\
+\midrule
+\endhead
+02 & \textbf{Wage and other personal costs -- 43,200.00 EUR}\\
+& Principal Investigator: 500 hours/year at 18 EUR/hour (18,000 EUR in total); Cryptography Researcher: 300 hours/year at 16 EUR/hour (9,600 EUR); Software/V2X Developer: 300 hours/year at 14 EUR/hour (8,400 EUR); Testing and Evaluation Researcher: 300 hours/year at 12 EUR/hour (7,200 EUR).\\[4pt]
+03 & \textbf{Social and health insurance -- 15,638.40 EUR}\\
+& Employer contributions estimated at 36.2\% of gross wages: 43,200.00 EUR $\times$ 0.362 = 15,638.40 EUR.\\[4pt]
+04 & \textbf{Travel costs -- 2,000.00 EUR}\\
+& 2027: domestic research meetings and technical workshop (500 EUR). 2028: one scientific conference or specialist workshop, travel and accommodation (1,500 EUR).\\[4pt]
+05 & \textbf{Material -- 2,400.00 EUR}\\
+& 2027: development peripherals, network interfaces, cables and laboratory consumables (1,500 EUR). 2028: adapters, replacement components and additional experimental materials (900 EUR).\\[4pt]
+06 & \textbf{Services -- 1,800.00 EUR}\\
+& 2027: computing services, hosting and technical support (900 EUR). 2028: computing resources, storage and technical services (900 EUR).\\[4pt]
+07 & \textbf{Energy, water, communications -- 600.00 EUR}\\
+& Electricity and network communications related to testing and computations: 300 EUR per year.\\[4pt]
+08 & \textbf{Popularization costs -- 0.00 EUR}\\
+& No funds requested.\\[4pt]
+09 & \textbf{Indirect costs -- 3,000.00 EUR}\\
+& Administrative, accounting and shared laboratory support: 1,500 EUR per year.\\
+\bottomrule
+\end{longtable}
+\normalsize
+
+\subsection*{Summary Budget of the Project}
+\budgettable
+
+\section*{VV-D -- Project Schedule}
+
+\begin{table}[htbp]
+\centering
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{@{}p{2.6cm}p{2.6cm}>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Begin of phase} & \textbf{End of phase} & \textbf{Phase name} \\
+\midrule
+01.01.2027 & 30.04.2027 & Analysis of V2X security requirements and post-quantum signature algorithms \\
+01.05.2027 & 31.10.2027 & System architecture design and development of the initial PQC software prototype \\
+01.11.2027 & 30.04.2028 & Integration of cryptographic mechanisms into the simulated V2X environment \\
+01.05.2028 & 30.09.2028 & Performance testing and optimization of signature verification and communication overhead \\
+01.10.2028 & 31.12.2028 & Final validation, evaluation of results and technical documentation \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection*{List of Devices in Project}
+
+\begin{table}[htbp]
+\centering
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{@{}p{4.1cm}>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Name} & \textbf{Description} \\
+\midrule
+Research workstations & Computers for software development, V2X simulation and cryptographic benchmarking. \\
+Network testing components & Network interfaces, adapters and cables for experimental communication tests. \\
+Embedded development modules & Small-scale development boards for performance measurements of cryptographic implementations. \\
+Computing infrastructure & Computing and storage resources for simulations, processing test data and evaluating results. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\end{document}
