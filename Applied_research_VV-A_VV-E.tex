@@ -74,21 +74,39 @@ Financing from other sources & 0.00 & 0.00 & 0.00\\
 \vspace{15pt}
 \section*{Application for Applied Research (Call VV-2024)}
 \vspace{10pt}
+\subsection*{Item VV-A1-01: Project ID}
+APVV-24-0000
+\vspace{15pt}
+\subsection*{Item VV-A1-02: Date of submission}
+1.11.2026
+\vspace{15pt}
 \subsection*{Item VV-A1-03: Project Title}
-\textbf{\large Implementation of Post-Quantum Cryptography in V2X Systems}
+Implementation of Post-Quantum Cryptography in V2X Systems
 \vspace{15pt}
 \subsection*{Item VV-A1-04: Project Acronym}
-\textbf{\large V2X-PQC}
+V2X-PQC
+\vspace{15pt}
+\subsection*{Item VV-A1-05: R\&D specialization}
+Informatics (Cybersecurity)
+\vspace{15pt}
+\subsection*{Item VV-A1-06: R\&D characterization}
+Applied research
+\vspace{15pt}
+\subsection*{Item VV-A1-07: Project start}
+1.1.2027
+\vspace{15pt}
+\subsection*{Item VV-A1-01: Project end}
+31.12.2028
 \vspace{15pt}
 \subsection*{Item VV-A1-09: Project Annotation}
 
-The advent of quantum computers poses an imminent security threat to modern cooperative intelligent transportation systems, making the transition to post-quantum cryptographic (PQC) standards necessary. Although the standardized ML-DSA (Dilithium) algorithm is widely applicable in the IT sector, it faces significant limitations in vehicle-to-everything (V2X) communication. Its 2,420-byte digital signature can overload communication channels under high traffic density. The alternative Falcon algorithm, with a 666-byte signature, reduces bandwidth consumption but entails substantial computational costs for verification. At busy intersections, this places an excessive burden on roadside units (RSUs), causing the critical latency threshold of 10 ms to be exceeded.
+The advent of quantum computers poses an imminent security threat to cooperative intelligent transport systems, making a transition to post-quantum cryptography (PQC) unavoidable. Standardized PQC signature schemes fit vehicle-to-everything (V2X) communication poorly. ML-DSA (Dilithium) produces 2,420-byte signatures that can overload communication channels in dense traffic, while Falcon, with 666-byte signatures, saves bandwidth but its computationally demanding verification threatens the critical 10 ms latency limit at busy intersections. Existing evaluations rarely reflect realistic traffic, so it remains unclear which PQC scheme, if any, satisfies V2X constraints.
 
 \par
-The main objective of the V2X-PQC project is to investigate and optimize PQC algorithms for V2X communication and develop a specialized software solution for roadside units (RSUs) and vehicle on-board units (OBUs). The proposed system will enable highly efficient verification of cryptographic signatures on messages shared among road users through PQC header compression and multithreaded processing of standardized Basic Safety Messages (BSMs).
+The main objective of the V2X-PQC project is to systematically benchmark PQC signature algorithms under realistic V2X conditions and, depending on the findings, to design a new algorithm fit for this use case. To this end, the team will extend the open-source AWSIM simulator with a V2X communication layer and a message verification module. This will enable reproducible experiments with standardized BSM messages, varying traffic density, message rates of up to 1,000 messages per second, and the limited processing capacity of verifying devices.
 
 \par
-The key project outcome will be an IEEE 1609.2-compatible software solution that reduces the volume of transmitted cryptographic data by more than 40\% and guarantees verification latency below 10 ms even at a load of 1,000 messages per second. Through hardware-specific code optimization, the resulting software will achieve a throughput of over 1,200 PQC signatures per second and reduce latency to below 5 ms. The project will optimize existing security standards for connected vehicles and adapt them to current technical requirements in the automotive industry.
+The project will deliver a simulation framework, a benchmark of candidate PQC schemes (including Dilithium and Falcon) measuring signature size, channel load, verification latency and throughput, and a research paper summarizing the results. Building on the identified bottlenecks, the project will also propose and evaluate an original PQC algorithm, or an optimization of an existing one, targeting verification latency below 10 ms at 1,000 messages per second and substantially less transmitted cryptographic data than Dilithium. The results will give vendors, operators and standardization bodies evidence-based guidance for adopting quantum-safe V2X security.
 
 \clearpage
 \section*{VV-C -- Budget of the Project in EUR}
