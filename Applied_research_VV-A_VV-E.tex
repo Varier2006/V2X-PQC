@@ -1,0 +1,316 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[a4paper,margin=20mm,top=19mm,bottom=20mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{array,booktabs,tabularx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{ragged2e}
+\usepackage{needspace}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\definecolor{navy}{HTML}{24456C}
+\definecolor{primary}{HTML}{24456C}
+\definecolor{lightgray}{HTML}{F2F4F7}
+\definecolor{muted}{HTML}{66788B}
+\definecolor{rulegray}{HTML}{DAE1E8}
+\hypersetup{colorlinks=true,linkcolor=navy,urlcolor=navy}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}\linespread{0.96}
+\setlength{\emergencystretch}{3em}
+\renewcommand{\arraystretch}{1.14}
+\setlength{\tabcolsep}{2.5pt}
+\setlist[itemize]{leftmargin=1.4em,itemsep=2pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=1.55em,itemsep=4pt,topsep=3pt}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\RaggedLeft\arraybackslash}p{#1}}
+\newcommand{\bigsec}[1]{\par\needspace{4\baselineskip}\vspace{9pt}\noindent{\Large\sffamily\bfseries\color{navy}#1}\par\vspace{2pt}\hrule height 0.4pt\color{black}\vspace{5pt}}
+\newcommand{\medsec}[1]{\par\needspace{3\baselineskip}\vspace{6pt}\noindent{\large\sffamily\bfseries\color{navy}#1}\par\vspace{3pt}}
+\newcommand{\smallsec}[1]{\par\needspace{2\baselineskip}\vspace{4pt}\noindent{\normalsize\sffamily\bfseries#1}\par\vspace{2pt}}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\scriptsize\color{muted}V2X-PQC}
+\fancyfoot[R]{\scriptsize\color{muted}\thepage}
+\begin{document}
+\begin{center}
+{\Large\bfseries Slovak University of Technology in Bratislava}\\[2pt]
+{\large Faculty of Informatics and Information Technologies}\\[15pt]
+{\LARGE\bfseries\color{primary} Methods of Engineering Work}\\[4pt]
+{\large Academic Year 2026/2027}
+\end{center}
+\vspace{10pt}
+\begin{center}
+\colorbox{lightgray}{\parbox{0.92\linewidth}{\vspace{7pt}\textbf{Team:} Mat\'u\v{s} \v{C}apo, Oleksii Demydchenko, Jakub Dufek, Danylo Dusheiko\vspace{7pt}}}
+\end{center}
+\vspace{17pt}
+\begin{center}
+{\Large\bfseries Application for Applied Research (Call VV-2024)}\\[7pt]
+{\large\color{primary}\bfseries V2X-PQC: Post-Quantum Cryptography Optimization for Secure V2X Communication in Cooperative Intelligent Transport Systems}
+\end{center}
+\vspace{12pt}
+\bigsec{VV-A Project identification}
+\noindent\textbf{VV-A1-01 Project ID:} APVV-24-0000\par
+\noindent\textbf{VV-A1-02 Date of submission:} 1 November 2026\par
+\noindent\textbf{VV-A1-03 Project title:} Post-Quantum Cryptography Optimization for Secure V2X Communication in Cooperative Intelligent Transport Systems\par
+\noindent\textbf{VV-A1-04 Project acronym:} V2X-PQC\par
+\noindent\textbf{VV-A1-05 R\&D specialization:} Informatics (Cybersecurity)\par
+\noindent\textbf{VV-A1-06 R\&D characterization:} Applied research\par
+\noindent\textbf{VV-A1-07 Project start:} 1 January 2027\par
+\noindent\textbf{VV-A1-08 Project end:} 31 December 2028\par
+\smallsec{VV-A1-09 Project annotation}
+V2X-PQC will evaluate post-quantum digital signatures for vehicle-to-everything communication. ECDSA is vulnerable to a sufficiently powerful quantum computer, while post-quantum alternatives introduce larger authentication payloads and different processing costs. Their suitability depends on the communication profile, traffic load and receiving device. The project will compare ECDSA P-256, ML-DSA-44 and Falcon-512 and identify where communication overhead or authentication processing limits performance.\par
+
+AWSIM will provide vehicle and sensor data for defined traffic scenarios. A separate communication and authentication model will be implemented using OMNeT++ and parameterized by documented cryptographic measurements. Experiments will cover different traffic loads, including receiver workloads approaching 1,000 messages per second. The project will evaluate certificate caching and verification scheduling against a common baseline and report their benefits, limitations and security considerations. Outputs will include the experimental framework, reproducible datasets, a comparative study and a research manuscript. The results will support future V2X integration and hardware validation; production deployment and a new secure signature algorithm are not assumed outcomes.\par
+
+\noindent\textbf{VV-A1-10 Coordinating organization:} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\par
+\noindent\textbf{VV-A1-11 Required budget from the agency:} 68,638.40 EUR\par
+\noindent\textbf{VV-A1-12 Financing from other sources:} 0.00 EUR\par
+\noindent\textbf{VV-A1-13 Total project budget:} 68,638.40 EUR\par
+\bigsec{VV-A2 Participating organizations}
+\medsec{Applicant}
+\noindent\textbf{ 01 Name:} FIIT STU Student Research group\par
+\noindent\textbf{ 02 Abbreviation:} FSSR\par
+\noindent\textbf{ 03 Address:} Ilkovičova 6276/2 4, 842 16 Bratislava\par
+\noindent\textbf{ 04 Organization ID:} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\par
+\noindent\textbf{ 05 Governmental branch:} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\par
+\noindent\textbf{ 06 Form of economy:} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\par
+\noindent\textbf{ 07 Contact person:} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\par
+\noindent\textbf{ 07 Phone:} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\par
+\noindent\textbf{ 07 Fax:} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\par
+\noindent\textbf{ 07 Email:} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\par
+\noindent\textbf{ 08 Statutory representative I:} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\par
+\noindent\textbf{ 09 Statutory representative II:} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\par
+\medsec{Cooperating organization}
+\noindent\textbf{ 01 Name:} Fakulta informatiky a informačných technológií Slovenskej technickej univerzity\par
+\noindent\textbf{ 02 Abbreviation:} FIIT STU\par
+\noindent\textbf{ 03 Address:} Ilkovičova 6276/2 4, 842 16 Bratislava\par
+\noindent\textbf{ 04 Organization ID:} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\par
+\noindent\textbf{ 05 Governmental branch:} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\par
+\noindent\textbf{ 06 Form of economy:} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\par
+\noindent\textbf{ 07 Contact person:} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\par
+\noindent\textbf{ 07 Phone:} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\par
+\noindent\textbf{ 07 Fax:} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\par
+\noindent\textbf{ 07 Email:} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\par
+\noindent\textbf{ 08 Statutory representative I:} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\par
+\noindent\textbf{ 09 Statutory representative II:} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\par
+\bigsec{VV-A3 List of participants}
+\par\medskip\noindent\footnotesize\begin{tabular}{@{}L{25mm}L{11mm}L{27mm}L{24mm}L{20mm}L{21mm}L{24mm}@{}}
+\toprule
+\textbf{Name} & \textbf{Titles} & \textbf{Role} & \textbf{Date of birth} & \textbf{Organization ID} & \textbf{Total hours} & \textbf{Hours per year} \\
+\midrule
+Jakub Dufek &  & Cryptography Researcher &  &  & 600 & 300 \\
+Matúš Čapo &  & Project Coordinator &  &  & 1,000 & 500 \\
+Danylo Dusheiko &  & Testing and Evaluation &  &  & 600 & 300 \\
+Oleksii Demydchenko &  & V2X Developer &  &  & 600 & 300 \\
+Other &  &  &  &  &  &  \\
+Total &  &  &  &  & 2,800 & 1,400 \\
+\bottomrule
+\end{tabular}\normalsize\par\medskip
+\bigsec{VV-A4 Principal Investigator}
+\noindent\textbf{01 Name and surname:} Matúš Čapo\par
+\noindent\textbf{02 Gender:} Male\par
+\noindent\textbf{03 Phone:} 0912 456 123\par
+\noindent\textbf{04 Email:} xcapo@stuba.sk\par
+\bigsec{VV-B Project objectives aims and outputs}
+\smallsec{01 Key words}
+post-quantum cryptography, V2X, ECDSA, ML-DSA, Falcon, IEEE 1609.2, AWSIM, Unity, autonomous driving, LiDAR, certificate caching, authentication latency\par
+
+\smallsec{02 Project objectives}
+V2X-PQC will evaluate post-quantum digital signatures for vehicle-to-everything (V2X) communication. It will compare processing costs and communication overhead, identify bottlenecks and test improvements to inform future V2X implementations.\par
+
+AWSIM is a Unity-based simulator for autonomous driving with Autoware. It generates LiDAR, camera, IMU and GNSS data and supports ROS 2 communication. The project will use vehicle and sensor data to define V2X scenarios. A separate model implemented using OMNeT++ will represent communication and authentication queues. Cryptographic benchmarks will run in a documented computing environment.\par
+
+\begin{enumerate}
+\item Comparison of algorithms. The project will compare ECDSA P-256, ML-DSA-44 and Falcon-512 by key, signature and secured-message sizes, signing and verification times, and memory use. Security categories and encodings will be stated. SLH-DSA will be included only in the analytical size comparison.
+\item Reproducible data collection. The team will document AWSIM inputs, V2X scenarios, benchmark hardware and software, workloads and certificate-processing costs. Experiments will use at least three traffic-load levels and ten independent runs per stochastic configuration, with random seeds recorded.
+\item Bottleneck analysis. The evaluation will compare verification throughput, modeled channel load and packet delivery, mean and 95th-percentile authentication latency, and authenticated-delivery ratios against predefined application targets. It will account for certificate availability and cache misses and distinguish modeled radio losses from processing delays. A 100 ms authentication deadline at receiver loads up to 1,000 messages per second will be tested as a reference scenario, with application-specific targets defined before evaluation.
+\item Evaluation of improvements. Certificate caching and verification scheduling will be compared with a common baseline that defines periodic certificate transmission and digest use. Parallel verification will be tested where supported, with resource limits and trade-offs recorded to derive preliminary V2X processing requirements.
+\end{enumerate}
+\smallsec{03 Indicate the project TRL level}
+Starting level: TRL 2 (technology concept formulated). Target level: TRL 3 (experimental proof of concept).\par
+
+\smallsec{03 Explain the indicated project TRL level}
+The TRL assessment concerns the proposed V2X authentication concept. At TRL 2, its integration approach and improvement hypotheses are formulated but have not been demonstrated in the project setup.\par
+
+TRL 3 requires an executable proof of concept combining AWSIM scenarios, cryptographic benchmarks and the communication and processing model. Reproducible tests must demonstrate the critical functions and evaluate at least two improvements against a documented baseline.\par
+
+Results will distinguish measured processing costs from modeled communication performance. Integration into representative V2X devices, laboratory validation beyond the proof of concept and field testing remain follow-up work.\par
+
+\smallsec{03 Project outputs and their relation to TRL}
+\par\medskip\noindent\footnotesize\begin{tabular}{@{}L{42mm}L{76mm}L{42mm}@{}}
+\toprule
+\textbf{Output} & \textbf{Evidence} & \textbf{Relation to TRL} \\
+\midrule
+Review article & State of the art and improvement hypotheses. & Supports TRL 2. \\
+Simulation and benchmark setup & AWSIM scenarios, processing measurements and explicit communication model. & Enables TRL 3 demonstration. \\
+Comparative study & Performance data, bottlenecks and operating limits. & Supports TRL 3 through demonstrated functions. \\
+Evaluated improvements & Baseline comparisons and preliminary V2X processing requirements. & Tested measures contribute to TRL 3. \\
+\bottomrule
+\end{tabular}\normalsize\par\medskip
+Completion requires evaluation of all three main schemes and reproducible configurations and analysis scripts. Experimental post-quantum message extensions will not imply production readiness or standards compliance.\par
+
+\smallsec{04 Project outcomes and applications in practice}
+\smallsec{The applicant is the recipient or implementer of the results}
+The research team will use the review, simulation setup, benchmarks and datasets to select algorithms, assess operating limits and plan integration into V2X devices and hardware validation.\par
+
+\smallsec{Another organization is the recipient or implementer of the results}
+Research groups, V2X developers and automotive hardware vendors may reuse the public methodology, code and data. Transfer to other devices or deployment profiles will require further measurements and security assessment.\par
+
+\smallsec{Name of the other recipient organization}
+Not applicable; no external recipient or implementation agreement is designated.\par
+
+\smallsec{05 Planned publicly available outputs and contributions}
+\par\medskip\noindent\footnotesize\begin{tabular}{@{}L{12mm}L{39mm}L{61mm}L{50mm}@{}}
+\toprule
+\textbf{Stage} & \textbf{Planned output} & \textbf{Contribution} & \textbf{Public availability} \\
+\midrule
+1 & Review and experiment specification & Background, hypotheses, workloads and acceptance targets. & Manuscript and specification. \\
+2 & Simulation and benchmark setup & AWSIM scenarios, benchmark configuration, message formats and model. & Code, configurations and methodology. \\
+3 & Comparative study & Processing costs and modeled communication bottlenecks. & Report, non-personal data and analysis scripts. \\
+4 & Evaluated improvements & Baseline comparisons, quantified trade-offs and preliminary V2X requirements. & Improvement report, data and analysis scripts. \\
+5 & Final evaluation and manuscript & Reproduced comparisons, consolidated findings and follow-up guidance. & Final report, documented release and manuscript for submission. \\
+\bottomrule
+\end{tabular}\normalsize\par\medskip
+The accompanying review establishes the scientific background; experimental outputs are planned project work. Releases will include configurations, assumptions, workloads, random seeds and reproduction instructions, subject to third-party licences.\par
+
+\bigsec{VV-C Budget of the project in EUR}
+\medsec{Applicant budget}
+\par\medskip\noindent\footnotesize\begin{tabular}{@{}L{78mm}L{28mm}L{28mm}L{28mm}@{}}
+\toprule
+\textbf{Budget category} & \textbf{2027 EUR} & \textbf{2028 EUR} & \textbf{Total EUR} \\
+\midrule
+01. Direct running costs & 32,619.20 & 33,019.20 & 65,638.40 \\
+02. Wage and other personnel costs & 21,600.00 & 21,600.00 & 43,200.00 \\
+03. Social and health insurance & 7,819.20 & 7,819.20 & 15,638.40 \\
+04. Travel costs & 500.00 & 1,500.00 & 2,000.00 \\
+05. Materials & 1,500.00 & 900.00 & 2,400.00 \\
+06. Services & 900.00 & 900.00 & 1,800.00 \\
+07. Energy water and communications & 300.00 & 300.00 & 600.00 \\
+08. Popularization costs & 0.00 & 0.00 & 0.00 \\
+09. Indirect costs & 1,500.00 & 1,500.00 & 3,000.00 \\
+10. Total running costs & 34,119.20 & 34,519.20 & 68,638.40 \\
+Total costs from APVV & 34,119.20 & 34,519.20 & 68,638.40 \\
+Financing from other sources & 0.00 & 0.00 & 0.00 \\
+State outside APVV & 0.00 & 0.00 & 0.00 \\
+Foreign & 0.00 & 0.00 & 0.00 \\
+Private & 0.00 & 0.00 & 0.00 \\
+Total costs & 34,119.20 & 34,519.20 & 68,638.40 \\
+\bottomrule
+\end{tabular}\normalsize\par\medskip
+\medsec{Expected costs covered by APVV}
+\smallsec{02 Personnel costs 43,200.00 EUR}
+The Principal Investigator will work 500 hours per year at 18 EUR per hour, totaling 18,000 EUR. The Cryptography Researcher will work 300 hours per year at 16 EUR per hour, totaling 9,600 EUR. The Software/V2X Developer will work 300 hours per year at 14 EUR per hour, totaling 8,400 EUR. The Testing and Evaluation Researcher will work 300 hours per year at 12 EUR per hour, totaling 7,200 EUR.\par
+
+\smallsec{03 Social and health insurance 15,638.40 EUR}
+Employer contributions are budgeted at 36.2\% of gross wages: 43,200.00 EUR $\times$ 0.362 = 15,638.40 EUR. This is the estimate used in the proposal.\par
+
+\smallsec{04 Travel costs 2,000.00 EUR}
+The 2027 allocation is 500 EUR for domestic research meetings and a technical workshop. The 2028 allocation is 1,500 EUR for travel and accommodation for one scientific conference or specialist workshop.\par
+
+\smallsec{05 Materials 2,400.00 EUR}
+The 2027 allocation is 1,500 EUR for development peripherals, network interfaces, cables and laboratory consumables. The 2028 allocation is 900 EUR for adapters, replacement components and additional experimental materials.\par
+
+\smallsec{06 Services 1,800.00 EUR}
+The allocation is 900 EUR in each year for computing resources, hosting, storage and technical support.\par
+
+\smallsec{07 Energy water and communications 600.00 EUR}
+The allocation is 300 EUR per year for electricity and network communications related to testing and computation.\par
+
+\smallsec{08 Popularization costs 0.00 EUR}
+No funds are requested under this category.\par
+
+\smallsec{09 Indirect costs 3,000.00 EUR}
+The allocation is 1,500 EUR per year for administrative, accounting and shared laboratory support.\par
+
+\medsec{Summary budget}
+\par\medskip\noindent\footnotesize\begin{tabular}{@{}L{78mm}L{28mm}L{28mm}L{28mm}@{}}
+\toprule
+\textbf{Budget category} & \textbf{2027 EUR} & \textbf{2028 EUR} & \textbf{Total EUR} \\
+\midrule
+01. Direct running costs & 32,619.20 & 33,019.20 & 65,638.40 \\
+02. Wage and other personnel costs & 21,600.00 & 21,600.00 & 43,200.00 \\
+03. Social and health insurance & 7,819.20 & 7,819.20 & 15,638.40 \\
+04. Travel costs & 500.00 & 1,500.00 & 2,000.00 \\
+05. Materials & 1,500.00 & 900.00 & 2,400.00 \\
+06. Services & 900.00 & 900.00 & 1,800.00 \\
+07. Energy water and communications & 300.00 & 300.00 & 600.00 \\
+08. Popularization costs & 0.00 & 0.00 & 0.00 \\
+09. Indirect costs & 1,500.00 & 1,500.00 & 3,000.00 \\
+10. Total running costs & 34,119.20 & 34,519.20 & 68,638.40 \\
+Total costs from APVV & 34,119.20 & 34,519.20 & 68,638.40 \\
+Financing from other sources & 0.00 & 0.00 & 0.00 \\
+State outside APVV & 0.00 & 0.00 & 0.00 \\
+Foreign & 0.00 & 0.00 & 0.00 \\
+Private & 0.00 & 0.00 & 0.00 \\
+Total costs & 34,119.20 & 34,519.20 & 68,638.40 \\
+\bottomrule
+\end{tabular}\normalsize\par\medskip
+\bigsec{VV-D Project schedule}
+\par\medskip\noindent\footnotesize\begin{tabular}{@{}L{26mm}L{27mm}L{13mm}L{94mm}@{}}
+\toprule
+\textbf{Start} & \textbf{End} & \textbf{WP} & \textbf{Phase} \\
+\midrule
+1 January 2027 & 30 April 2027 & WP1 & Analysis of V2X security requirements and post-quantum signature algorithms \\
+1 May 2027 & 31 October 2027 & WP2 & System architecture and initial AWSIM-based V2X simulation and authentication framework \\
+1 November 2027 & 30 April 2028 & WP3 & Integration and comparative evaluation of cryptographic mechanisms in the simulated V2X environment \\
+1 May 2028 & 30 September 2028 & WP4 & Evaluation of improvements to verification processing and communication overhead \\
+1 October 2028 & 31 December 2028 & WP5 & Final proof-of-concept evaluation, documentation and research manuscript \\
+\bottomrule
+\end{tabular}\normalsize\par\medskip
+The project will run for 24 months. The work packages and milestones are described in VV-F.3.1.\par
+
+\medsec{Project devices and computing resources}
+\par\medskip\noindent\small\begin{tabular}{@{}L{44mm}L{119mm}@{}}
+\toprule
+\textbf{Resource} & \textbf{Description} \\
+\midrule
+Research workstations & University computers for software development, simulation, performance measurements and documentation. \\
+GPU computing resources & Available university or rented computing resources for simulation software and demanding traffic scenarios. \\
+Data storage devices & Storage for simulation data, test results, measurements and project files. \\
+\bottomrule
+\end{tabular}\normalsize\par\medskip
+\bigsec{VV-E Declaration of honor}
+\medsec{Statutory representative of the applicant organization}
+I, the undersigned \_\_\_\_\_\_, statutory representative, hereby bindingly declare that:\par
+
+\begin{itemize}
+\item the organization holds a valid certificate of eligibility to carry out research and development under the conditions set out in the public call, in accordance with Section \S{} 26a of Act No. 172/2005 Coll., as amended, and is registered in the list of persons eligible to carry out research and development;
+\item all information contained in the proposal documentation is true;
+\item the organization has, or will secure, its own resources for co-financing the project*;
+\item the submitted project proposal has not been and is not being funded from other sources (national or foreign);
+\item the organization will not provide any indirect state aid within the meaning of the specific conditions of the call;
+\item the organization is not a tax debtor;
+\item the organization is not in arrears on social insurance contributions (pension, sickness, guarantee and accident insurance, unemployment insurance, reserve solidarity fund insurance) or on contributions to old- age pension savings;
+\item the organization is not in arrears on health insurance contributions (with any health insurance company);
+\item the organization is not in liquidation;
+\item no enforcement of a judgment is being conducted against the organization (not relevant for public administration entities);
+\item no bankruptcy or restructuring proceedings have been initiated against the organization (not relevant for public administration entities);
+\item bankruptcy has not been declared on the organization's assets (not relevant for public administration entities);
+\item no petition for bankruptcy against the organization has been rejected for lack of assets (not relevant for public administration entities);
+\item the organization has not violated the prohibition of illegal work and illegal employment under the special regulation since its entry into force (1 April 2005) and, in the case of a violation involving the illegal employment of a foreigner under Section 2(2)(c) of Act No. 82/2005 Coll. on illegal work and illegal employment, as amended, for a period of five years after the violation of this prohibition;
+\item the organization has settled its financial relations with the state budget;
+\item the organization will cooperate in providing documents proving fulfilment of the conditions for granting the subsidy under Act No. 523/2004 Coll.;
+\item I am aware of the obligation to provide information on research and development funded from the state budget, for the purpose of publication in accordance with applicable Slovak legislation;
+\item I am aware of the obligation to publish, on the central information portal, information on the technical research and development infrastructure that we build from state budget funds or European Union funds;
+\item I am aware that, according to the public call, APVV will publish on its website www.apvv.sk, pursuant to Section 19d(4) of Act No. 172/2005 Coll., as amended, the decision on applications recommended and not recommended for funding by APVV bodies, limited to: application number, project title, applicant;
+\item I am aware of the obligation to popularize the project results in order to inform the public in an understandable way about the benefits of the R\&D results and outputs;
+\item the content of the submitted project proposal will not be funded from national sources of grant schemes other than the relevant APVV grant scheme.
+\end{itemize}
+As statutory representative, I am, by my signature, responsible for the correctness and truthfulness of the information provided in this electronic application.\par
+
+If requested by APVV, I undertake to replace this declaration of honour with up-to-date certificates from the relevant authorities.\par
+
+I am aware that if the information in this declaration is found to be untrue, the application will be excluded, the funding agreement will not be signed, or the agreement will be terminated.\par
+
+* only where there is an obligation to co-finance the project\par
+
+\noindent\textbf{ Name of the applicant organization:} FIIT STU Student Research group\par
+\noindent\textbf{ Name of the statutory representative (I, II):} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\par
+\noindent\textbf{ Represented by (write the name legibly):} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\par
+\noindent\textbf{ Signature of the statutory representative:} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\par
+\noindent\textbf{ Place:} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\par
+\noindent\textbf{ Date:} 1.11.2026\par
+\end{document}

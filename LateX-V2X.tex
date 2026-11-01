@@ -1,0 +1,138 @@
+% Methods of Engineering Work -- article (English version)
+\documentclass[10pt,twoside,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{cite}
+
+\pagestyle{headings}
+
+\title{Post-Quantum Signatures in V2X Communication: Deployment Problems and Directions for Improvement\thanks{Semester project in Methods of Engineering Work, academic year 2026/27, supervised by the course instructor}}
+
+\author{Mat{\'u}{\v s} {\v C}apo, Oleksii Demydchenko, Jakub Dufek, Danylo Dusheiko\\[2pt]
+	{\small Slovak University of Technology in Bratislava}\\
+	{\small Faculty of Informatics and Information Technologies}
+	}
+
+\date{\small 31 October 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+V2X communication is secured with ECDSA signatures, which can be forged once a sufficiently powerful quantum computer exists. Standardized post-quantum signatures, however, are 10 to 40 times larger, which threatens radio channel capacity, message delivery reliability and verification latency. The article summarizes the theoretical background and the state of research, describes five main deployment problems (message size, reliability at higher traffic density, standards designed for elliptic curves, immature standards and the transition period), and compares directions for solving them, including hybrid certificates, reducing the data in a message, and migrating the infrastructure. A rough calculation shows that sending the certificate less often can cut the volume of cryptographic data by about half for Falcon-512, but by only about a third for ML-DSA-44.
+\end{abstract}
+
+\section{Introduction}
+
+This article deals with securing vehicle-to-everything (V2X) communication with post-quantum digital signatures. V2X means the exchange of data between vehicles, with road infrastructure and with other road users. The IEEE 1609.2 standard requires every broadcast message to be signed, so that the receiver can verify its origin and integrity~\cite{IEEE:1609.2}. By the efficiency of a signature scheme in V2X we mean how well the scheme, at a given traffic density, meets the requirements on message size, radio channel capacity, delivery reliability and verification latency. This definition follows the requirements that standards and studies place on V2X~\cite{Abrar:2026}, and it allows schemes to be compared on several criteria at once, not only by signature size.
+
+The motivation is practical. According to an analysis by the US NHTSA, combined vehicle-to-vehicle and vehicle-to-infrastructure communication could potentially address about 81~\% of target crashes involving unimpaired drivers~\cite{Najm:2010}, so road safety depends on how reliable this communication is. Its security today rests on ECDSA, which Shor's algorithm~\cite{Shor:1994} makes vulnerable to a sufficiently large quantum computer. A vehicle can stay in service for two decades or more~\cite{Yoshizawa:2022}, so the move to post-quantum cryptography has to begin early~\cite{Mosca:2018}. In the final version of its transition plan of October 2026, NIST deprecates ECDSA after 2030 and disallows it after 2035~\cite{NIST:IR8547}.
+
+Standardized post-quantum signatures are much larger than ECDSA signatures, and in V2X, where messages are sent often over a shared radio channel, this causes problems. Section~\ref{teoria} therefore summarizes the theoretical background, Section~\ref{problemy} describes the significant deployment problems, Section~\ref{navrh} compares possible solutions, and Section~\ref{zaver} states what the article contributes and what remains open.
+
+\section{Theoretical Background and State of the Art} \label{teoria}
+
+\subsection{Security of V2X communication}
+
+V2X communication is built on the periodic broadcast of short messages in which a vehicle announces its position, speed and heading. In the United States these are Basic Safety Messages (BSM), defined by SAE~J2735~\cite{SAE:J2735}, and in Europe Cooperative Awareness Messages (CAM). Messages are sent at up to 10~Hz~\cite{Kenney:DSRC} over IEEE~802.11p (ITS-G5) or the PC5 sidelink of C-V2X, and the end-to-end latency limit is 100~ms~\cite{Abrar:2026}. Collision warnings are computed from these messages, so the receiver has to verify the origin and integrity of each one. This is done according to IEEE~1609.2~\cite{IEEE:1609.2} and its European counterpart ETSI TS~103~097~\cite{ETSI:103097}. Each message is wrapped in a secured protocol data unit (SPDU) and signed with ECDSA over the P-256 curve, which gives a 64-byte signature. The sender is identified either by its full pseudonym certificate or by an 8-byte digest of it (HashedId8)~\cite{Abrar:2026}. The full certificate is attached about once per second, so the overhead of the classical scheme is small, and the design of V2X relies on this. Trust is provided by a hierarchical public key infrastructure, in the United States the SCMS~\cite{Whyte:SCMS}, in which vehicles rotate short-lived pseudonym certificates to avoid being tracked.
+
+\subsection{Quantum threat and post-quantum standardization}
+
+The security of ECDSA rests on the hardness of the discrete logarithm problem, which Shor's algorithm solves in polynomial time on a sufficiently large quantum computer~\cite{Shor:1994}. It has been estimated that about 20~million noisy qubits would break RSA-2048 in eight hours~\cite{Gidney:2021}, and elliptic curves need even fewer resources~\cite{Roetteler:2017}. For signatures, the risk is forgery after such a computer exists, not the decryption of recorded traffic. According to Mosca's argument~\cite{Mosca:2018}, migration has to start when the time a system must stay protected, plus the time needed to migrate, exceeds the time until a quantum computer arrives. A vehicle can stay in service for two decades or more~\cite{Yoshizawa:2022}, so this argument is strong in the automotive sector. In its final transition plan of October 2026, NIST deprecates ECDSA after 2030 and disallows it after 2035~\cite{NIST:IR8547}.
+
+Post-quantum algorithms rely on problems that quantum computers are not known to solve efficiently, such as lattice-based and hash-based constructions~\cite{Bernstein:2017}. After a multi-year process, NIST selected CRYSTALS-Dilithium, Falcon and SPHINCS+ for digital signatures~\cite{NIST:IR8413}. Dilithium and SPHINCS+ were published in August 2024 as ML-DSA (FIPS~204)~\cite{NIST:FIPS204} and SLH-DSA (FIPS~205)~\cite{NIST:FIPS205}. Falcon is being standardized as FN-DSA (FIPS~206), but the draft of this standard is not final as of October 2026~\cite{NIST:FIPS206}.
+
+\subsection{Comparison of signature schemes}
+
+The main difference from ECDSA is size (Table~\ref{t:schemes}). An ML-DSA-44 signature is about 38 times larger than an ECDSA signature~\cite{NIST:FIPS204,Ducas:Dilithium}, a Falcon-512 signature about 10 times larger~\cite{Fouque:Falcon}, and SLH-DSA signatures are larger by two orders of magnitude~\cite{NIST:FIPS205}. ML-DSA uses integer arithmetic and is relatively easy to implement securely. Falcon needs floating-point arithmetic and Gaussian sampling for signing, which is difficult on microcontrollers without an FPU, while its verification is fast. SLH-DSA has conservative security assumptions, but its signatures are too large for periodic messages. No standardized scheme is therefore clearly the best for V2X. Exact timings depend on the platform and implementation, and measurements on ARM Cortex-M4 processors are available in the pqm4 project~\cite{Kannwischer:pqm4}.
+
+\begin{table}[tbh]
+\centering\small
+\caption{Comparison of signature schemes~\cite{NIST:FIPS204,NIST:FIPS205,Fouque:Falcon}.}
+\label{t:schemes}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.7cm}>{\raggedright\arraybackslash}p{2.7cm}>{\raggedright\arraybackslash}p{1.6cm}rr@{}}
+\toprule
+\textbf{Scheme} & \textbf{Basis} & \textbf{NIST level} & \textbf{Key [B]} & \textbf{Signature [B]}\\
+\midrule
+ECDSA P-256 & elliptic curves & -- & 33--64 & 64\\
+ML-DSA-44 & lattices (MLWE) & 2 & 1\,312 & 2\,420\\
+Falcon-512 & lattices (NTRU) & 1 & 897 & 666\\
+SLH-DSA-128s/f & hashes & 1 & 32 & 7\,856 / 17\,088\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Significant Problems in Deploying PQC in V2X} \label{problemy}
+
+Replacing ECDSA directly with a post-quantum algorithm in the existing V2X stack is not feasible. Five main problems can be identified in the literature.
+
+\subsection{Message size and channel capacity}
+
+The first problem is message size, which a rough calculation illustrates. If a BSM with a 200-byte base message contained an ML-DSA-44 signature (2\,420~B) and a certificate with a public key (1\,312~B), it would be about 3.9~kB long. At 10~Hz, one vehicle would transmit about 315~kbit/s, so an ITS-G5 channel with the default rate of 6~Mbit/s would be filled by only about twenty vehicles. For Falcon-512 the figure is about forty vehicles, and for ECDSA about two hundred and fifty. This is an upper bound that ignores MAC-layer overhead and collisions.
+
+The size of the transport block is an even stricter limit. A study of standardized C-V2X communication~\cite{Abrar:2026} reports that, under the SAE~J3161 profile, the largest transport block is 2\,481 bytes. An SPDU with a full certificate is 301~B for ECDSA and 1\,735~B for Falcon-512, but 3\,904~B for ML-DSA-44. Even ML-DSA-44 with a certificate digest (2\,495~B) exceeds the limit, so ML-DSA-44 and SLH-DSA are unusable in this profile, and only Falcon-512 complies.
+
+\subsection{Reliability and latency}
+
+The second problem is delivery reliability at higher traffic density. In a simulation of the full C-V2X stack~\cite{Abrar:2026}, Falcon-512 reached a mean latency of about 52~ms, the same as ECDSA, and met the 100~ms limit even at the 95th percentile. It reached the required 90~\% of delivered messages only at the lowest traffic density, while ECDSA did so up to medium density. The authors therefore see spectrum efficiency, rather than computing power, as the main deployment constraint. It also remains open whether single-threaded verification is enough on embedded platforms. An on-board unit receives ten messages per second from each vehicle in range at 10~Hz, which makes 1\,000 messages per second for a hundred vehicles, and exact verification times depend on the platform and implementation.
+
+\subsection{Standards designed for elliptic curves}
+
+The third problem lies in the design of the standards themselves. According to the authors of~\cite{Yoshizawa:2023}, the certificate definition in V2X does not support forward compatibility, because it does not take migration to PQC into account. In addition, the SCMS uses implicit certificates and key expansion, which rely on properties of elliptic curves~\cite{Whyte:SCMS} and have no direct post-quantum counterpart. Quantum-resistant proposals such as qSCMS~\cite{Barreto:2018} and the ETSI migration framework~\cite{ETSI:TR103619} are so far a starting point, not a finished solution.
+
+\subsection{Immature standards and implementations}
+
+The fourth problem is immaturity. FN-DSA is not final~\cite{NIST:FIPS206}, Falcon signing is difficult to implement~\cite{Fouque:Falcon}, and the widely used liboqs library~\cite{Stebila:2016} is not optimized for embedded automotive platforms~\cite{Abrar:2026}. Measurement results therefore cannot be transferred to real OBUs without reservations.
+
+\subsection{Transition period}
+
+The last problem is the transition period, during which vehicles with classical and post-quantum units have to work together. Larger certificates also raise memory requirements for preloaded pseudonym certificates~\cite{Yoshizawa:2022}, and the effect of larger certificates on transmission times and reliability has already been observed for X.509 certificates~\cite{Kampanakis:2018}. The first two problems show up directly in communication performance and can be measured. The others affect the design of solutions, but resolving them depends on standardization.
+
+\section{Possible Solutions and Their Comparison} \label{navrh}
+
+A solution that would remove all the problems of the previous section at once does not yet exist. The literature does offer several directions that ease individual causes. Figure~\ref{f:smery} links them to the causes and effects described in Section~\ref{problemy}.
+
+\begin{figure}[tbh]
+\centering
+\includegraphics[width=\textwidth]{diagram.pdf}
+\caption{Causes of the deployment problems of PQC in V2X, their effects and directions for improvement.}
+\label{f:smery}
+\end{figure}
+
+\subsection{Hybrid certificates and adaptive switching}
+
+The NIST transition plan allows hybrid modes in which a post-quantum algorithm is combined with a classical one~\cite{NIST:IR8547}. The authors of the C-V2X study propose a hybrid ECDSA and Falcon scheme that would switch between the algorithms depending on channel load, although it would require changes to IEEE 1609.2 and SAE J3161~\cite{Abrar:2026}. The advantage is a smooth transition, and the disadvantage is a larger message whenever the post-quantum part is used.
+
+\subsection{Less data in a message}
+
+IEEE 1609.2 already allows the sender to be identified by an 8-byte digest instead of the full certificate~\cite{Abrar:2026}. If the full certificate is attached less often, a receiver that already knows it only has to verify the message signature. A rough calculation shows that the benefit depends on the scheme. With a naive replacement, where the certificate is attached to every message, Falcon-512 (signature and key together 1\,563~B) has an average overhead of 1\,563~B. If the certificate is attached to one message in ten and a digest to the others, the overhead falls to about 763~B, which is 51~\% less. For ML-DSA-44 (3\,732~B) it falls to about 2\,558~B, only 31~\% less, because the signature alone makes up almost 65~\% of that size. Compared with today's practice, in which the certificate is attached once per second, the benefit is smaller.
+
+\subsection{Radio layer and coverage}
+
+According to the study~\cite{Abrar:2026}, the range of modulation and coding schemes in the SAE J3161 profile could be extended, which would reduce the number of subchannels that Falcon-512 needs, but this step has to be validated first. In environments without line of sight, the authors recommend prioritizing the design of signal coverage over the choice of algorithm.
+
+\subsection{Migration of the certificate infrastructure}
+
+Quantum-resistant certificate provisioning was proposed in qSCMS~\cite{Barreto:2018}, and the migration framework is described in ETSI TR 103 619~\cite{ETSI:TR103619}. The certificate definition in V2X also does not support forward compatibility~\cite{Yoshizawa:2023}, so changing it is a condition for a smooth transition.
+
+\subsection{Similarity to solutions from other fields}
+
+A similar problem appeared with X.509 certificates, where larger post-quantum certificates worsen transmission times and reliability~\cite{Kampanakis:2018}. In V2X the situation is stricter, because messages are broadcast repeatedly over a shared medium with a latency limit of 100~ms~\cite{Abrar:2026}, so solutions from the internet public key infrastructure cannot be taken over without changes.
+
+\section{Conclusion} \label{zaver}
+
+The article examined how post-quantum signatures can be used in V2X and why a direct replacement of ECDSA is not possible. The main constraint is the size of the transmitted data, which limits channel capacity and delivery reliability, while verification time matters less. Falcon-512 is the only standardized candidate that meets the transport block limit, but its standard is not final, and its reliability drops considerably at higher traffic density.
+
+The article contributes an overview of the deployment problems supported by the literature, a comparison of ECDSA, ML-DSA, Falcon and SLH-DSA, a rough calculation of channel capacity and of the potential for shrinking a message, and a map that links the causes of the problems to directions for improvement. What remains open is mainly the quantification of the benefit of individual measures for each scheme at different traffic densities, the finalization of the FN-DSA standard, adding forward compatibility to certificates, and validation on real vehicle hardware.
+
+\bibliography{literatura}
+\bibliographystyle{plain}
+\end{document}
