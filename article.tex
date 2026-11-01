@@ -41,12 +41,7 @@ channel capacity, message delivery reliability and verification latency. The art
 the theoretical background and current research, describes five main deployment problems
 (message size, reliability at higher traffic density, standards designed for elliptic curves,
 immature standards and the transition period), and compares possible responses, including
-hybrid certificates, reducing the data in a message and migrating the infrastructure. An
-illustrative key-and-signature model shows reductions of about 51\,\% for Falcon-512 and 31\,\%
-for ML-DSA-44 compared with attaching key-bearing credentials to every message; these
-are not savings for complete certificates or over an existing once-per-second schedule. The
-findings depend on the communication profile, traffic load and implementation; they do not
-establish one scheme as the best for all V2X applications.
+hybrid certificates, reducing the data in a message and migrating the infrastructure.
 \end{abstract}
 
 \section{Introduction}
@@ -69,6 +64,7 @@ authenticated communication is one condition for realizing that potential. ECDSA
 to Shor's algorithm on a sufficiently large quantum computer~\cite{shor}, while a vehicle can
 remain in service for two decades or more~\cite{yoshizawa22}. Migration therefore needs to be
 planned before the threat becomes practical~\cite{mosca}.
+\vspace{5cm}
 
 The difficulty is that post-quantum algorithms change both the amount of transmitted data and
 the requirements on the infrastructure. Section~\ref{sec:theory} summarizes the theoretical
@@ -268,7 +264,7 @@ links them to the causes and effects described in Section~\ref{sec:problems}.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.7\textwidth]{diagramMIP.pdf}
+\includegraphics[width=0.65\textwidth]{diagramMIP.pdf}
 \caption{Causes of the deployment problems of PQC in V2X, their effects and directions for
 improvement. The arrows indicate relation}
 \label{fig:map}
