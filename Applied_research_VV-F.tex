@@ -1,250 +1,229 @@
-\documentclass[11pt,a4paper]{article}
-\usepackage[a4paper,margin=2.5cm]{geometry}
+\documentclass[10pt,a4paper]{article}
+\usepackage[a4paper,margin=20mm,top=19mm,bottom=20mm]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
 \usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{array,longtable,booktabs,tabularx}
 \usepackage{xcolor}
 \usepackage{enumitem}
+\usepackage{ragged2e}
+\usepackage{needspace}
+\usepackage{fancyhdr}
 \usepackage{hyperref}
-\usepackage{booktabs,longtable,tabularx,array}
-\definecolor{primary}{RGB}{26,58,138}
-\definecolor{secondary}{RGB}{91,85,105}
-\definecolor{lightgray}{RGB}{248,250,252}
-\definecolor{bordergray}{RGB}{226,232,240}
-\hypersetup{colorlinks=true,linkcolor=primary,urlcolor=primary,pdftitle={V2X-PQC - VV-F Implementation},pdfauthor={Matus Capo, Oleksii Demydchenko, Jakub Dufek, Danylo Dusheiko}}
-\pagestyle{plain}
-\renewcommand{\arraystretch}{1.17}
-\setlist[itemize]{leftmargin=*,itemsep=2pt,topsep=3pt}
-\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\definecolor{navy}{HTML}{24456C}
+\definecolor{primary}{HTML}{24456C}
+\definecolor{lightgray}{HTML}{F2F4F7}
+\definecolor{muted}{HTML}{66788B}
+\definecolor{rulegray}{HTML}{DAE1E8}
+\hypersetup{colorlinks=true,linkcolor=navy,urlcolor=navy}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}\linespread{0.96}
+\setlength{\emergencystretch}{3em}
+\renewcommand{\arraystretch}{1.14}
+\setlength{\tabcolsep}{2.5pt}
+\setlist[itemize]{leftmargin=1.4em,itemsep=2pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=1.55em,itemsep=4pt,topsep=3pt}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\RaggedLeft\arraybackslash}p{#1}}
+\newcommand{\bigsec}[1]{\par\needspace{4\baselineskip}\vspace{9pt}\noindent{\Large\sffamily\bfseries\color{navy}#1}\par\vspace{2pt}\hrule height 0.4pt\color{black}\vspace{5pt}}
+\newcommand{\medsec}[1]{\par\needspace{3\baselineskip}\vspace{6pt}\noindent{\large\sffamily\bfseries\color{navy}#1}\par\vspace{3pt}}
+\newcommand{\smallsec}[1]{\par\needspace{2\baselineskip}\vspace{4pt}\noindent{\normalsize\sffamily\bfseries#1}\par\vspace{2pt}}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\scriptsize\color{muted}V2X-PQC}
+\fancyfoot[R]{\scriptsize\color{muted}\thepage}
 \begin{document}
+
 \begin{center}
-{\Large\textbf{Slovak University of Technology in Bratislava}}\\[2pt]
+
+{\Large\bfseries Slovak University of Technology in Bratislava}\\[2pt]
+
 {\large Faculty of Informatics and Information Technologies}\\[15pt]
-{\LARGE\textbf{\color{primary}Methods of Engineering Work}}\\[4pt]
+
+{\LARGE\bfseries\color{primary} Methods of Engineering Work}\\[4pt]
+
 {\large Academic Year 2026/2027}
+
 \end{center}
+
 \vspace{10pt}
-\begin{center}
-\colorbox{lightgray}{\parbox{0.95\textwidth}{\vspace{7pt}\textbf{Team:} Matúš Čapo, Oleksii Demydchenko, Jakub Dufek, Danylo Dusheiko\vspace{7pt}}}
-\end{center}
-\vspace{15pt}
-\section*{Application for Applied Research (Call VV-2024)}
-\section*{VV-F — 3. Implementation}
-\subsection*{3.1 Project Plan and Expected Outputs}
-The V2X-PQC project is planned for 24 months, from January 2027 to December 2028. Its main objective is to develop and test a software prototype that integrates post-quantum digital signature algorithms into Vehicle-to-Everything (V2X) communication.
-
-The research will focus on ML-DSA and Falcon, comparing their computational requirements, signature sizes, and verification performance. The project will also investigate possible improvements in message processing, particularly in situations where a roadside unit (RSU) must verify a large number of incoming messages.
-
-Instead of developing a complete physical V2X infrastructure, the team will use a simulated traffic and communication environment. This approach allows different traffic conditions to be tested without purchasing expensive roadside equipment.
-
-The project is divided into five work packages (WPs), following the schedule defined in VV-D.
-
-\subsubsection*{WP1 — Analysis of V2X Security Requirements and PQC Algorithms}
-\textbf{Period: January 2027 – April 2027}
-
-The first four months will be dedicated to reviewing existing V2X security mechanisms and analysing the use of post-quantum cryptography in vehicle communication.
-
-The team will examine the IEEE 1609.2 standard and compare ML-DSA and Falcon in terms of signature size, processing speed, and computational requirements.
-
-Initial benchmarking will be performed using existing cryptographic implementations. These measurements will provide baseline results for evaluating later optimizations.
-
-\textbf{Expected outputs:}
-\begin{itemize}
-\item Analysis of V2X security requirements and relevant standards.
-\item Comparison of ML-DSA and Falcon.
-\item Initial benchmark results and technical requirements for the prototype.
-\end{itemize}
-\textbf{Milestone M1:} Selection of the algorithms, test methodology, and performance criteria.
-
-\subsubsection*{WP2 — System Architecture and Prototype Development}
-\textbf{Period: May 2027 – October 2027}
-
-During this phase, the team will design the software architecture and develop the first functional version of the V2X-PQC prototype.
-
-The prototype will include modules for generating and verifying post-quantum digital signatures, processing test messages, and collecting performance measurements.
-
-The implementation will primarily use C++ for performance-sensitive operations and Python for test automation and analysis. Existing cryptographic libraries will be used where possible instead of implementing the algorithms from scratch.
-
-At the end of this phase, the prototype should be able to sign and verify individual messages and record the time required for these operations.
-
-\textbf{Expected outputs:}
-\begin{itemize}
-\item Modular software architecture.
-\item Functional implementation of the selected PQC mechanisms.
-\item Initial prototype with automated performance measurements.
-\end{itemize}
-\textbf{Milestone M2:} Completion of a working cryptographic prototype.
-
-\subsubsection*{WP3 — Integration into the Simulated V2X Environment}
-\textbf{Period: November 2027 – April 2028}
-
-The prototype will be connected to a simulated V2X communication environment.
-
-The team plans to use SUMO for traffic simulation and a compatible network simulation framework to model communication between vehicles and roadside units.
-
-Different scenarios will be prepared, including a low-density road, a busy intersection, and a situation where multiple vehicles send safety messages simultaneously.
-
-The experiments will investigate how increasing message frequency affects signature verification time and RSU processing load.
-
-The team will also implement and evaluate multithreaded message verification to determine whether parallel processing improves performance under high traffic loads.
-
-\textbf{Expected outputs:}
-\begin{itemize}
-\item Integrated simulation environment.
-\item Traffic scenarios with different message loads.
-\item Initial measurements of verification latency and throughput.
-\end{itemize}
-\textbf{Milestone M3:} Successful processing of signed V2X messages in the simulation environment.
-
-\subsubsection*{WP4 — Performance Testing and Optimization}
-\textbf{Period: May 2028 – September 2028}
-
-The fourth phase will focus on performance testing and optimization.
-
-The team will compare the original implementations with the optimized prototype under identical experimental conditions. Measurements will include signature verification time, processing throughput, message size, CPU utilization, and memory consumption.
-
-Tests will be performed at different message rates, including scenarios approaching 1,000 incoming messages per second.
-
-The main performance targets are:
-\begin{itemize}
-\item \textbf{Communication overhead:} investigate whether the transmitted cryptographic data can be reduced by approximately 30--40\% compared with a clearly defined baseline, through algorithm selection and optimization of message representation.
-\item \textbf{Verification latency:} aim for a verification time below 10 ms under defined test conditions.
-\item \textbf{Processing throughput:} evaluate whether the selected hardware can process more than 1,200 signature verifications per second using optimized and parallel processing.
-\end{itemize}
-The exact results will depend on the selected algorithm, hardware, and traffic conditions. Therefore, these values are research targets rather than guaranteed outcomes.
-
-Cryptographic signatures will not be shortened in ways that invalidate their format or security properties. Any reduction in communication overhead will be evaluated for compatibility with the selected message format and security requirements.
-
-If the proposed targets cannot be achieved, the team will document the limitations and identify the main performance bottlenecks.
-
-\textbf{Expected outputs:}
-\begin{itemize}
-\item Benchmark results for different traffic scenarios.
-\item Optimized prototype.
-\item Comparison of baseline and optimized implementations.
-\item Analysis of performance limitations.
-\end{itemize}
-\textbf{Milestone M4:} Completion of performance testing and evaluation of optimization methods.
-
-\subsubsection*{WP5 — Final Validation and Documentation}
-\textbf{Period: October 2028 – December 2028}
-
-The final three months will be used to review experimental results, verify the stability of the prototype, and prepare technical documentation.
-
-The team will repeat selected experiments to check the consistency of the measurements and summarize the differences between the tested algorithms.
-
-The final report will describe the implemented solution, experimental conditions, achieved performance, and limitations of the simulation-based approach.
-
-\textbf{Expected outputs:}
-\begin{itemize}
-\item Final version of the experimental software prototype.
-\item Technical documentation and test results.
-\item Final research report and materials for a scientific publication.
-\end{itemize}
-\textbf{Milestone M5:} Completion of the prototype validation and final project report.
-
-\subsection*{3.2 Project Management}
-The project will be carried out by four researchers with responsibilities divided according to their technical specialization.
-
-\begin{tabularx}{\textwidth}{@{}p{0.29\textwidth}Y@{}}
-\toprule
-\textbf{Team member} & \textbf{Main responsibilities} \\
-\midrule
-Principal Investigator & Research coordination, methodology, progress monitoring, and final evaluation \\
-Cryptography Researcher & Analysis of ML-DSA and Falcon, cryptographic integration, and evaluation of optimization methods \\
-Software and V2X Developer & Prototype architecture, software development, and integration with the V2X simulation \\
-Testing and Evaluation Researcher & Experimental scenarios, performance measurements, data analysis, and validation \\
-\bottomrule
-\end{tabularx}
-
-Each researcher will work part-time according to the personnel allocation defined in VV-C.
-
-The team will hold coordination meetings approximately every two weeks to discuss progress, technical problems, and upcoming tasks.
-
-GitHub will be used for source code management, while Jira will support task assignment and milestone tracking. Code changes will be reviewed before being merged into the main project branch.
-
-At the end of each work package, the responsible researchers will present the completed results. The Principal Investigator will check whether the required milestone has been achieved before the next phase is finalized.
-
-The project schedule also allows some overlap between implementation and testing activities. This should help the team identify technical problems before the final evaluation phase.
-
-\subsection*{3.3 Implementation Risks and Mitigation Strategies}
-The main project risks are related to cryptographic performance, software integration, and the limited resources available for experimental testing.
-
-\small
-\begin{longtable}{@{}p{0.265\textwidth}p{0.265\textwidth}p{0.39\textwidth}@{}}
-\toprule
-\textbf{Risk} & \textbf{Potential impact} & \textbf{Mitigation} \\
-\midrule
-\endhead
-PQC verification is slower than expected & Higher processing latency at RSUs & Profile the implementation, evaluate parallel processing, and compare algorithm alternatives \\
-\addlinespace
-Cryptographic data cannot be reduced by 30--40\% & Communication overhead remains high & Compare message formats and algorithm choices; report measured improvements without compromising security \\
-\addlinespace
-Difficulties integrating cryptographic libraries into the simulator & Delays in WP3 & Use a modular architecture and test integration with simple messages first \\
-\addlinespace
-Simulation does not accurately represent real-world V2X conditions & Limited practical applicability & Test multiple traffic scenarios and clearly document simulation limitations \\
-\addlinespace
-Development tasks take longer than planned & Delays in milestones & Prioritize the basic prototype before implementing optional optimizations \\
-\addlinespace
-Insufficient computing performance & Limited experimental throughput & Reuse available university computing resources and adjust experiment sizes when necessary \\
-\bottomrule
-\end{longtable}
-\normalsize
-
-One important technical risk concerns the compatibility of post-quantum signatures with existing V2X security message formats.
-
-The project will investigate the requirements of IEEE 1609.2, but full compatibility with existing deployment environments cannot be assumed without additional validation. If direct integration proves impractical, the team will use an experimental message format to evaluate the cryptographic mechanisms while documenting the necessary compatibility changes.
-
-Another risk is that some performance targets may not be achieved on the available hardware. In this case, the team will focus on identifying bottlenecks and providing reproducible measurements rather than claiming improvements that cannot be demonstrated.
-
-\subsection*{3.4 Budget Justification}
-The total project budget is \textbf{EUR 68,638.40} for the two-year implementation period.
-
-The largest share of the budget is allocated to personnel costs because the project mainly involves software development, cryptographic analysis, simulation, and experimental testing.
-
-The project team consists of four part-time researchers. Estimated gross personnel costs amount to EUR 43,200, with an additional EUR 15,638.40 allocated to employer social and health insurance contributions.
-
-The remaining EUR 9,800 is allocated as follows:
 
 \begin{center}
-\begin{tabular}{@{}lr@{}}
-\toprule
-\textbf{Category} & \textbf{Budget} \\
-\midrule
-Travel costs & EUR 2,000 \\
-Materials & EUR 2,400 \\
-Services & EUR 1,800 \\
-Energy and communications & EUR 600 \\
-Indirect costs & EUR 3,000 \\
-\midrule
-\textbf{Total} & \textbf{EUR 9,800} \\
-\bottomrule
-\end{tabular}
+
+\colorbox{lightgray}{\parbox{0.92\linewidth}{\vspace{7pt}\textbf{Team:} Mat\'u\v{s} \v{C}apo, Oleksii Demydchenko, Jakub Dufek, Danylo Dusheiko\vspace{7pt}}}
+
 \end{center}
 
-The material budget will support the purchase of development accessories, networking components, and small testing modules.
+\vspace{17pt}
 
-Service costs will cover additional computing resources and technical services required for experiments that cannot be performed using existing university equipment.
+\begin{center}
 
-Travel expenses will support selected scientific conferences and research meetings.
+{\Large\bfseries Application for Applied Research (Call VV-2024)}\\[7pt]
 
-The budget assumes that the university already provides basic computers, development facilities, and internet connectivity. Expensive physical V2X infrastructure is not included because the main experiments will be performed through simulation.
+{\large\color{primary}\bfseries V2X-PQC: Post-Quantum Cryptography for Secure V2X Communication}
 
-This approach keeps the project costs relatively low while allocating most resources to research and development activities.
+\end{center}
 
-\subsection*{3.5 Technical and Personnel Infrastructure}
-The project will primarily use existing university computing resources together with open-source software.
+\vspace{12pt}
+\bigsec{1. Excellence}
+\medsec{1.1 Project Intent, Proposed Approach and Application Level of Expected Results}
+The project's intent is to determine which PQC signature scheme, if any, meets the real constraints of V2X and, where none does, to design one that does. We will:\par
 
-The planned development environment includes C++ and Python for prototype implementation, testing, and data analysis. SUMO and a compatible network simulator will be used to model V2X communication under different traffic conditions.
+\begin{enumerate}
+\item extend the open-source AWSIM simulator with a V2X communication layer and a message-verification module using the OMNeT++ framework;
+\item use it to run a reproducible benchmark of candidate PQC signature schemes under realistic traffic;
+\item use the identified bottlenecks to propose and evaluate an original PQC algorithm or an optimisation of an existing one.
+\end{enumerate}
+The expected results will reach TRL 3 following testing and experimental validation in a controlled simulation environment. Vendors and standardisation bodies can then use them as evidence for follow-up development.\par
 
-Existing implementations of ML-DSA and Falcon will provide the basis for cryptographic benchmarking and integration. The specific libraries will be selected during WP1 based on their supported algorithms, documentation, and suitability for performance testing.
+\medsec{1.2 Relevance of the Goals and Originality}
+\textbf{Relevance.} The standardised PQC signatures fit V2X poorly for different reasons:\par
 
-GitHub will be used for version control, while Jira will help coordinate research activities and monitor project progress.
+\begin{itemize}
+\item ML-DSA (Dilithium): ML-DSA-44 signatures of 2,420 bytes are many times larger than ECDSA signatures of about 64 bytes. In dense traffic, this can saturate a channel with limited capacity (e.g. a 10 MHz ITS-G5 channel).
+\item Falcon (FN-DSA): signatures are much smaller, at about 666 bytes (Falcon-512). However, its practical suitability for resource-limited verifying devices at busy intersections, under the 100 ms latency budget required by SAE J 2945-1-2026, remains unresolved.
+\end{itemize}
+\textbf{Originality.} Existing PQC evaluations mostly use isolated micro-benchmarks and rarely reflect realistic traffic. Here, cryptographic cost is evaluated jointly with traffic density, message rates (up to 1,000 messages per second at the receiver) and the limited processing capacity of verifying devices, all within one reproducible simulation environment.\par
 
-Most experiments will run on standard research workstations. Additional networking accessories and small development components may be purchased within the material budget.
+\medsec{1.3 State of Knowledge, Scientific Foundations and Prior Results}
+\begin{itemize}
+\item \textbf{Standards.} NIST has standardised ML-DSA (FIPS 204) and SLH-DSA (FIPS 205); Falcon is being standardised as FN-DSA. V2X security today follows IEEE 1609.2 and ETSI ITS security, with certificate-based ECDSA signing.
+\item \textbf{Literature.} Existing studies mainly report single-operation timings of PQC schemes on generic or embedded CPUs, and some evaluate PQC in V2X in analytical or small-scale settings. The gap is a systematic comparison under realistic traffic loads and receiver-side verification limits.
+\item \textbf{Tools.} We build on the open-source ecosystem: AWSIM and OMNeT++.
+\end{itemize}
+\needspace{12\baselineskip}
+\medsec{1.4 Objectives and Feasibility}
+\par\medskip\noindent\small\begin{tabular}{@{}L{11.53mm}L{70.80mm}L{82.33mm}@{}}
+\toprule
+\textbf{\#} & \textbf{Objective} & \textbf{Measurable target} \\
+\midrule
+O1 & Simulation framework: AWSIM augmented with a V2X communication layer using OMNeT++ tools & Reproducible, documented, open-source release; standardised BSMs, adjustable density, message rates of up to 1,000 msg/s \\
+O2 & Benchmark of candidate PQC signatures (including ML-DSA and Falcon, with ECDSA as the baseline) & Signature size, channel load, verification latency and throughput reported for each scheme and traffic scenario \\
+O3 & Original PQC algorithm, or optimisation of an existing one & Verification latency below 100 ms at 1,000 msg/s on the reference device; substantially less transmitted cryptographic data than ML-DSA \\
+O4 & Dissemination and guidance & At least one research paper; evidence-based recommendations for vendors, operators and standardisation bodies \\
+\bottomrule\end{tabular}\normalsize\par\medskip
+\textbf{Feasibility.} O1 and O2 rely on established tools and well-defined methods, so we assess their risks as low. O3 is the high-risk, high-gain part, because a new signature scheme needs rigorous security analysis and cannot be guaranteed. The project therefore has a staged, risk-managed design: O3 builds on the O2 findings and includes a fallback, namely an optimised implementation or protocol-level improvement of an existing scheme with a security argument. This fallback still produces publishable and usable results.\par
 
-The research team will cover four main areas: cryptography, software development, V2X integration, and experimental evaluation. This division allows the work to be distributed while maintaining cooperation between the individual project phases.
+\medsec{1.5 Methodology and Its Justification}
+\begin{enumerate}
+\item \textbf{Requirements and scenarios.} Define V2X constraints (channel capacity, message size limits, latency budget, message rates) and traffic scenarios (urban intersection, highway, dense congestion) from standards and literature.
+\item \textbf{Framework development.} Add a V2X layer to AWSIM, covering message generation (BSM), channel and loss models, receiver queueing, and a verification module with plug-in cryptographic back-ends. Validate the layer against analytical estimates and published channel behaviour.
+\item \textbf{Benchmark.} Run each candidate scheme across the scenario matrix (density $\times$ message rate $\times$ device capacity), with repetitions and fixed seeds for reproducibility. Measure cryptographic micro-benchmarks on representative embedded or automotive-class hardware and feed the measured costs into the simulation, so the results rest on measurements and not only on modelled timings.
+\item \textbf{Bottleneck analysis.} Identify whether bandwidth, verification time, certificate and public-key size, or queueing dominates for each scheme.
+\item \textbf{Algorithm design and evaluation.} Candidate directions include optimised arithmetic (e.g. NTT and vectorised or hardware-assisted implementations), batch or pipelined verification, certificate and public-key handling strategies, parameter tailoring, or a new scheme variant. We will pursue the most promising directions according to the bottleneck analysis and evaluate them with the same framework. Any new construction will undergo a security analysis (reduction arguments and cryptanalysis review).
+\item \textbf{Dissemination.} Publish the framework, data and results to the extent permitted.
+\end{enumerate}
+\textbf{Justification.} Simulation allows controlled, repeatable experiments across traffic densities that are impractical or unsafe to reproduce on real roads. Combining it with hardware-measured cryptographic costs limits a main weakness of simulation, namely model inaccuracy. Using open-source simulators helps others replicate and extend the work.\par
 
-Using existing infrastructure and widely available development tools should reduce costs and make the experimental results easier to reproduce.
+\clearpage
+\bigsec{2. Impact}
+\medsec{Benefits for the Development of Knowledge, Applied Research and Innovation}
+The project addresses an unresolved gap in post-quantum cryptography (PQC) for cooperative intelligent transport systems. Neither of the standardised candidates fits V2X conditions: ML-DSA (Dilithium) produces 2,420-byte signatures that overload communication channels at high traffic density, while Falcon, with 666-byte signatures, makes verification too demanding for roadside units (RSUs) at busy intersections and risks exceeding the 100 ms latency limit required by the SAE J 2945-1-2026 standard. The project will deliver:\par
+
+\begin{itemize}
+\item \textbf{New knowledge:} A systematic, reproducible evaluation of PQC signature schemes under realistic V2X load (message rates, hardware limits, latency budgets), which is currently lacking.
+\item \textbf{Simulation environment:} By combining AWSIM, a Unity-based simulator for Autoware that generates realistic vehicle dynamics, sensor data (LiDAR, cameras and GNSS), and traffic scenarios, with OMNeT++, a discrete-event network simulator that models wireless channels, packet loss, latency and congestion, we will build an environment for testing and comparing cryptographic algorithms in a realistic V2X setting.
+\item \textbf{New PQC algorithm:} A PQC algorithm for RSUs and on-board units (OBUs), compatible with IEEE 1609.2, aiming to reduce transmitted cryptographic data by at least 40\% compared with ML-DSA-44 while ensuring that signature verification latency remains below 100 ms at 1,000 messages per second. The designed PQC algorithm would secure V2X communication against future quantum attacks while respecting the real-time limits of hardware.
+\end{itemize}
+\medsec{Usability of the Results for the Applicant and Users}
+The primary users are manufacturers and integrators of RSUs and OBUs, road infrastructure operators, and automotive suppliers. These organizations will integrate the research outputs into their roadside and vehicle security products and verify them on target hardware, which provides a direct route from research to practice.\par
+
+Because the solution targets IEEE 1609.2, it can be reused wherever V2X systems must migrate to PQC. Quantum-safe security matters especially for vehicles and roadside equipment because their service lives are long, so systems deployed now must remain secure for many years.\par
+
+\medsec{Degree of Economic Benefit}
+\begin{itemize}
+\item \textbf{Added value and competitiveness:} The automotive supply chain gains knowledge, a testing environment and an optimised PQC algorithm, shortening the time to market for quantum-safe products.
+\item \textbf{Quality of life and health:} Secure V2X communication is a precondition for safety applications such as collision warnings, so protecting message authenticity supports road safety. Fewer hazardous situations mean fewer injuries and fatalities, along with reduced long-term disability and strain on healthcare systems. Smoother, more predictable traffic flow enabled by trustworthy cooperative driving also cuts congestion, emissions, and driver stress, improving everyday wellbeing in urban areas.
+\end{itemize}
+\clearpage
+\bigsec{3. Implementation}
+\medsec{3.1 Project Plan and Expected Outputs}
+The V2X-PQC project will run for 24 months, from January 2027 to December 2028. It is divided into five work packages (WPs), following the schedule in VV-D. Each stage builds on the results of the previous one.\par
+
+\smallsec{WP1 --- Analysis of V2X Security Requirements and PQC Algorithms}
+January 2027 -- April 2027\par
+
+The team will review V2X security requirements, relevant standards and existing research on post-quantum cryptography. ECDSA, ML-DSA-44 and Falcon-512 will be selected for comparison. The team will also define the experimental scenarios and performance metrics.\par
+
+\noindent\textbf{Milestone M1:} Research review and testing methodology completed.\par
+\smallsec{WP2 --- Development of the V2X Simulation Environment}
+May 2027 -- October 2027\par
+
+The team will connect AWSIM and OMNeT++ to simulate vehicle movement and network communication. A separate component will be added to generate and verify digital signatures. Development will begin with simple scenarios before moving to more complex traffic conditions.\par
+
+\noindent\textbf{Milestone M2:} Functional simulation environment with message verification.\par
+\smallsec{WP3 --- Comparative Testing of Signature Algorithms}
+November 2027 -- April 2028\par
+
+The selected algorithms will be tested under different simulated traffic conditions, including higher message rates approaching 1,000 messages per second at a receiving unit. The team will compare signature sizes, signing and verification times, processing throughput, network delays and message delivery.\par
+
+Experiments will be repeated under consistent conditions to obtain reliable results.\par
+
+\noindent\textbf{Milestone M3:} Comparative testing completed and main performance limitations identified.\par
+\smallsec{WP4 --- Proposal of a New or Optimised PQC Approach}
+May 2028 -- September 2028\par
+
+Based on the test results, the team will identify the main limitations of the evaluated algorithms and propose a possible improvement for V2X communication.\par
+
+The proposal may focus on an existing algorithm or a different way of handling cryptographic operations and information. The team will explain its expected benefits, security considerations and limitations. A complete implementation of a new cryptographic algorithm is not required.\par
+
+\noindent\textbf{Milestone M4:} Proposed PQC approach and its technical justification completed.\par
+\smallsec{WP5 --- Final Evaluation and Publication}
+October 2028 -- December 2028\par
+
+The final stage will focus on reviewing the results, preparing documentation and writing a research paper. The team will summarize the main findings and identify possible directions for future research.\par
+
+\noindent\textbf{Milestone M5:} Final report, documentation and research manuscript completed.\par
+\medsec{3.2 Project Management}
+The project will be carried out by four team members, each responsible for a specific area.\par
+
+\par\medskip\noindent\small\begin{tabular}{@{}L{37.87mm}L{42.81mm}L{83.98mm}@{}}
+\toprule
+\textbf{Team member} & \textbf{Position} & \textbf{Main responsibility} \\
+\midrule
+Matúš Čapo & Project Coordinator & Planning, coordination and progress monitoring \\
+Jakub Dufek & Cryptography Researcher & Analysis and testing of digital signature algorithms \\
+Oleksii Demydchenko & V2X Developer & Development and integration of simulation software \\
+Danylo Dusheiko & Testing and Evaluation & Test scenarios, measurements and analysis of results \\
+\bottomrule\end{tabular}\normalsize\par\medskip
+The team will hold regular meetings to discuss progress, solve problems and plan upcoming tasks. GitHub will be used to manage source code and track development tasks.\par
+
+At the end of each work package, the team will review the completed work and check whether the planned milestone has been achieved.\par
+
+The total planned workload is 2,800 hours over two years, with 1,400 hours allocated to each year.\par
+
+\needspace{13\baselineskip}
+\medsec{3.3 Implementation Risks and Risk Mitigation}
+The main risks are related to software integration, experimental measurements and project scheduling.\par
+
+\par\medskip\noindent\small\begin{tabular}{@{}L{49.40mm}L{41.16mm}L{74.10mm}@{}}
+\toprule
+\textbf{Risk} & \textbf{Affected output} & \textbf{Mitigation} \\
+\midrule
+Difficult integration of AWSIM and OMNeT++ & Simulation environment (WP2) & Start with simple scenarios. If direct synchronisation is too difficult, use recorded vehicle movement data. \\
+Problems with cryptographic libraries & Benchmark results (WP3) & Use existing implementations and test them separately before integration. \\
+High computing requirements or inconsistent measurements & Comparative study (WP3) & Begin with smaller experiments, repeat tests and document the configurations. \\
+No clear improvement identified & PQC proposal (WP4) & Focus on the observed limitations and propose realistic improvements supported by the results. \\
+Delays in development & Final outputs (WP5) & Monitor progress regularly and adjust individual tasks when needed. \\
+\bottomrule\end{tabular}\normalsize\par\medskip
+The team will test components step by step to identify problems early. If a planned approach proves too difficult, an alternative method will be considered and its limitations documented.\par
+
+\medsec{3.4 Budget Justification}
+The total project budget is 68,638.40 EUR for 2027--2028, as detailed in VV-C.\par
+
+Most of the budget is allocated to personnel costs, including 43,200 EUR for wages and 15,638.40 EUR for estimated social and health insurance contributions. These costs reflect the work needed for research, simulation development, cryptographic testing and evaluation. The remaining funds cover travel, materials, computing services, energy, communications and indirect costs. These expenses will support software development, experiments and the presentation of research results.\par
+
+The project will mainly use open-source software and existing university computing resources where available, helping to reduce equipment costs. The budget is therefore focused on the main research activities and the resources needed to complete the planned work packages.\par
+
+\medsec{3.5 Technical and Personnel Infrastructure}
+The project is planned to use university workstations for software development, simulations and performance testing. Access to these resources will be confirmed before the relevant project stages begin. Additional computing capacity or storage may be obtained through the planned services budget if needed.\par
+
+The main software tools will include AWSIM, OMNeT++ and existing cryptographic libraries. These tools will provide the basis for developing the simulation environment and comparing digital signature algorithms.\par
+
+The four-member team will cover project coordination, cryptographic research, V2X development and testing. The members will cooperate during software integration and experimental evaluation.\par
+
+The project will focus on software-based experiments without requiring physical V2X communication hardware.\par
+
 \end{document}
